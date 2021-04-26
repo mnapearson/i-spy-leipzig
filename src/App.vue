@@ -4,10 +4,13 @@
     <router-view />
     <div id="nav">
       <footer>
-        <button><router-link class="link" to="/">HOME</router-link></button>
         <button>
+          <router-link class="link" to="/">SPY BOARD</router-link>
+        </button>
+        <button>
+          <router-link class="link" to="spy">SPY SUM1</router-link></button
+        ><button>
           <router-link class="link" to="/About">INFO</router-link></button
-        ><button><router-link class="link" to="spy">SPY</router-link></button
         ><button>
           <router-link class="link" to="/login">HI</router-link>
         </button>

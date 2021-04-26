@@ -22,6 +22,15 @@ firebase.auth().onAuthStateChanged((user) => {
   store.dispatch("fetchUser", user);
 });
 
+const db = firebase.firestore();
+const auth = firebase.auth();
+
+const usersCollection = db.collection("users");
+const postsCollection = db.collection("posts");
+const likesCollection = db.collection("likes");
+
+export { db, auth, usersCollection, postsCollection, likesCollection };
+
 new Vue({
   router,
   store,

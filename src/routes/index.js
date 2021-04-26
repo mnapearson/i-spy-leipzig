@@ -7,6 +7,8 @@ import Home from "../components/Home";
 import Bye from "../components/Bye";
 import Spy from "../components/Spy";
 import Verify from "../components/Verify";
+import Account from "../components/Account";
+import { auth } from "../main";
 
 Vue.use(Router);
 
@@ -49,8 +51,29 @@ const router = new Router({
       path: "/verify",
       name: "Verify",
       component: Verify,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/account",
+      name: "account",
+      component: Account,
+      meta: {
+        requiresAuth: true,
+      },
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some((x) => x.meta.requiresAuth);
+
+  if (requiresAuth && !auth.currentUser) {
+    next("/login");
+  } else {
+    next();
+  }
 });
 
 export default router;
