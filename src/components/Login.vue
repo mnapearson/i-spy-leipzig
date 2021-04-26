@@ -4,6 +4,7 @@
       <h1>
         Hi, {{ user.data.displayName }}. You are currently logged in ;) ...
       </h1>
+      <Account></Account>
     </template>
     <template v-if="!user.loggedIn">
       <div class="row justify-content-center">
@@ -80,11 +81,13 @@
 
 <script>
 import PasswordReset from "@/components/PasswordReset";
+import Account from "@/components/Account";
 import firebase from "firebase";
 import { mapGetters } from "vuex";
 export default {
   components: {
     PasswordReset,
+    Account,
   },
   name: "Login",
   data() {

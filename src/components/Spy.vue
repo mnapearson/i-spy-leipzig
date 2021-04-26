@@ -5,7 +5,7 @@
     </template>
     <template v-if="!user.loggedIn"
       ><h1>
-        Hi, you. Click 'hi' to login or register to start spying...
+        Hi, you. Click 'hi' to start spying...
       </h1></template
     >
   </div>
