@@ -129,17 +129,13 @@ export default {
             .then(this.$router.push({ name: "Verify" }));
         });
 
-      firebase.auth().onAuthStateChanged(function(user) {
-        user.sendEmailVerification();
-      });
-
       firebase
         .auth()
         .onAuthStateChanged(function(user) {
           if (user.emailVerified) {
             this.$router.push({ name: "Home" });
           } else {
-            this.$router.push({ name: "Verify" });
+            user.sendEmailVerification();
           }
         })
 

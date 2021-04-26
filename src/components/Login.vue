@@ -62,6 +62,13 @@
                     <button type="submit" class="btn btn-primary">Login</button>
                   </div>
                 </div>
+                <div class="extras">
+                  <a @click="togglePasswordReset()">Forgot Password?</a>
+                </div>
+                <PasswordReset
+                  v-if="showPasswordReset"
+                  @close="togglePasswordReset()"
+                ></PasswordReset>
               </form>
             </div>
           </div>
@@ -72,9 +79,13 @@
 </template>
 
 <script>
+import PasswordReset from "@/components/PasswordReset";
 import firebase from "firebase";
 import { mapGetters } from "vuex";
 export default {
+  components: {
+    PasswordReset,
+  },
   name: "Login",
   data() {
     return {
@@ -83,6 +94,7 @@ export default {
         password: "",
       },
       error: null,
+      showPasswordReset: false,
     };
   },
   computed: {
@@ -92,6 +104,9 @@ export default {
     }),
   },
   methods: {
+    togglePasswordReset() {
+      this.showPasswordReset = !this.showPasswordReset;
+    },
     submit() {
       firebase
         .auth()
