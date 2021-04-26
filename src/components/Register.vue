@@ -126,8 +126,23 @@ export default {
             .updateProfile({
               displayName: this.form.username,
             })
-            .then(this.$router.push({ name: "Home" }));
+            .then(this.$router.push({ name: "Verify" }));
+        });
+
+      firebase.auth().onAuthStateChanged(function(user) {
+        user.sendEmailVerification();
+      });
+
+      firebase
+        .auth()
+        .onAuthStateChanged(function(user) {
+          if (user.emailVerified) {
+            this.$router.push({ name: "Home" });
+          } else {
+            this.$router.push({ name: "Verify" });
+          }
         })
+
         .catch((err) => {
           this.error = err.message;
         });

@@ -6,6 +6,7 @@ import About from "../components/About";
 import Home from "../components/Home";
 import Bye from "../components/Bye";
 import Spy from "../components/Spy";
+import Verify from "../components/Verify";
 
 Vue.use(Router);
 
@@ -43,6 +44,11 @@ const router = new Router({
       path: "/spy",
       name: "Spy",
       component: Spy,
+    },
+    {
+      path: "/verify",
+      name: "Verify",
+      component: Verify,
     },
   ],
 });
