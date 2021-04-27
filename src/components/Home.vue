@@ -11,9 +11,6 @@
           <div class="filter-buttons">
             <div class="option date">Date</div>
             <div class="option place">Place</div>
-            <div class="option gender">ALL</div>
-            <div class="detail">saw</div>
-            <div class="option gender">ALL</div>
           </div>
         </div>
         <div class="posts">
