@@ -21,13 +21,17 @@
 
           <div class="col">Post</div>
           <div class="row date">
-            <p>@Manbun</p>
+            <p>@Frenchie</p>
             <p>25.04.21</p>
             <button>reply</button>
           </div>
           <div class="row text">
-            Saw you at OMAD. Fell in love with your swag ways. Wish I had the
-            guts to say so then. Still thinking of you now.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis,
+            doloribus at totam iste unde iusto enim odit molestiae dicta ad
+            magni officia animi ullam laboriosam in soluta fuga accusantium sint
+            consectetur? Dicta sit impedit iste, aliquid voluptatum, repudiandae
+            ab magnam officiis reiciendis quisquam dolores necessitatibus ipsum
+            perspiciatis qui itaque optio.
           </div>
           <div class="row date">
             <p>@SexyMicha</p>
@@ -35,8 +39,9 @@
             <button>reply</button>
           </div>
           <div class="row text">
-            you said you would paint me. but you still haven't come thru. don't
-            leave me wanting more from you.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas
+            tempora ex consectetur necessitatibus? Inventore, magni voluptatibus
+            iste blanditiis reprehenderit sapiente.
           </div>
         </div>
       </div>
@@ -76,6 +81,12 @@ export default {
 * {
   margin: 0 auto;
   font-family: "Roboto Mono", monospace;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 section {

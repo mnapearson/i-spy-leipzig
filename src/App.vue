@@ -1,24 +1,22 @@
 <template>
   <div id="app">
     <header><img src="./assets/ISPYBANNER.png" alt="" /></header>
+    <footer>
+      <button>
+        <router-link class="link" to="/">SPY BOARD</router-link>
+      </button>
+      <button>
+        <router-link class="link" to="spy">SPY SUM1</router-link></button
+      ><button>
+        <router-link class="link" to="/About">INFO</router-link></button
+      ><button>
+        <router-link class="link" to="/login">HI</router-link>
+      </button>
+      <button class="link" @click.prevent="signOut">
+        BYE
+      </button>
+    </footer>
     <router-view />
-    <div id="nav">
-      <footer>
-        <button>
-          <router-link class="link" to="/">SPY BOARD</router-link>
-        </button>
-        <button>
-          <router-link class="link" to="spy">SPY SUM1</router-link></button
-        ><button>
-          <router-link class="link" to="/About">INFO</router-link></button
-        ><button>
-          <router-link class="link" to="/login">HI</router-link>
-        </button>
-        <button class="link" @click.prevent="signOut">
-          BYE
-        </button>
-      </footer>
-    </div>
   </div>
 </template>
 

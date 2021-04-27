@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <div class="card">
-          <div class="card-header">Register</div>
+        <div>
+          <h1>Register</h1>
           <div class="card-body">
             <div v-if="error" class="alert alert-danger">{{ error }}</div>
             <form action="#" @submit.prevent="submit">
@@ -146,3 +146,16 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+button {
+  margin-top: 1rem;
+}
+</style>

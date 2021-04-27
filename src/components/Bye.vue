@@ -11,4 +11,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+h1,
+p {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+</style>

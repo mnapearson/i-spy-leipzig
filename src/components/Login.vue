@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <template v-if="user.loggedIn">
       <h1>
         Hi, {{ user.data.displayName }}. You are currently logged in ;) ...
@@ -7,12 +7,12 @@
       <Account></Account>
     </template>
     <template v-if="!user.loggedIn">
-      <div class="row justify-content-center">
+      <div class="container">
         <h1>Need to create an account?</h1>
         <button>
           <router-link class="link" to="/Register">REGISTER</router-link>
         </button>
-        <div class="col-md-8">
+        <div class="login">
           <div class="card">
             <div class="card-header"><h1>Login</h1></div>
             <div class="card-body">
@@ -122,3 +122,27 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.extras {
+  margin-top: 2rem;
+}
+
+button {
+  margin-top: 1rem;
+}
+</style>
