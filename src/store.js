@@ -1,37 +1,51 @@
+import { auth, db } from "@/firebase";
 import Vue from "vue";
 import Vuex from "vuex";
+import { vuexfireMutations, firestoreAction } from "vuexfire";
+
+import router from "@/routes";
+
 Vue.use(Vuex);
+
 export default new Vuex.Store({
   state: {
-    user: {
-      loggedIn: false,
-      data: null,
-    },
+    user: null,
+    profiles: [],
+    posts: [],
   },
   getters: {
-    user(state) {
-      return state.user;
+    myProfile: (state) => {
+      return state.profiles.find((profile) => profile.id == state.user.uid);
+    },
+    getProfileById: (state) => (id) => {
+      return state.profiles.find((profile) => profile.id == id);
     },
   },
   mutations: {
+    ...vuexfireMutations,
+    SET_USER(state, user) {
+      state.user = user;
+      if (!user) {
+        state.profiles = [];
+        state.posts = [];
+      }
+    },
     SET_LOGGED_IN(state, value) {
       state.user.loggedIn = value;
     },
-    SET_USER(state, data) {
-      state.user.data = data;
-    },
   },
   actions: {
-    fetchUser({ commit }, user) {
-      commit("SET_LOGGED_IN", user !== null);
-      if (user) {
-        commit("SET_USER", {
-          displayName: user.displayName,
-          email: user.email,
-        });
-      } else {
-        commit("SET_USER", null);
-      }
+    async signInAgain() {
+      await router.push({
+        name: "Login",
+      });
+      await auth.signOut();
     },
+    bindProfiles: firestoreAction(({ bindFirestoreRef }) =>
+      bindFirestoreRef("profiles", db.collection("profiles"), { wait: true })
+    ),
+    bindPosts: firestoreAction(({ bindFirestoreRef }) =>
+      bindFirestoreRef("posts", db.collection("posts"))
+    ),
   },
 });

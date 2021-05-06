@@ -6,7 +6,7 @@
           <h1>Register</h1>
           <div class="card-body">
             <div v-if="error" class="alert alert-danger">{{ error }}</div>
-            <form action="#" @submit.prevent="submit">
+            <form @submit.prevent="submit">
               <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right"
                   >Name</label
@@ -14,14 +14,11 @@
 
                 <div class="col-md-6">
                   <input
-                    id="name"
-                    type="name"
-                    class="form-control"
+                    type="text"
                     name="name"
-                    value
                     required
                     autofocus
-                    v-model="form.name"
+                    v-model="userInfo.name"
                   />
                 </div>
               </div>
@@ -42,7 +39,7 @@
                     value
                     required
                     autofocus
-                    v-model="form.username"
+                    v-model="userInfo.userName"
                   />
                 </div>
               </div>
@@ -61,7 +58,7 @@
                     value
                     required
                     autofocus
-                    v-model="form.email"
+                    v-model="email"
                   />
                 </div>
               </div>
@@ -80,8 +77,15 @@
                     class="form-control"
                     name="password"
                     required
-                    v-model="form.password"
+                    v-model="password"
                   />
+                  <div
+                    v-if="!$v.password.minLength && $v.password.$dirty"
+                    class="error"
+                  >
+                    Password must have at least
+                    {{ $v.password.$params.minLength.min }} charachters.
+                  </div>
                 </div>
               </div>
 
@@ -90,6 +94,9 @@
                   <button type="submit" class="btn btn-primary">
                     Register
                   </button>
+                  <h4 v-if="error">
+                    {{ error }}
+                  </h4>
                 </div>
               </div>
             </form>
@@ -101,47 +108,55 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import { auth, db } from "@/firebase";
+import { mapState } from "vuex";
+import { required, minLength } from "vuelidate/lib/validators";
 
 export default {
   name: "Register",
   data() {
     return {
-      form: {
-        name: "",
-        username: "",
-        email: "",
-        password: "",
-      },
       error: null,
+
+      email: "",
+      password: "",
+      userInfo: this.createEmptyUserInfo(),
     };
   },
+  validations: {
+    password: {
+      required,
+      minLength: minLength(6),
+    },
+  },
+  computed: {
+    ...mapState(["user", "profile"]),
+  },
   methods: {
-    submit() {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.form.email, this.form.password)
-        .then((data) => {
-          data.user
-            .updateProfile({
-              displayName: this.form.username,
-            })
-            .then(this.$router.push({ name: "Verify" }));
+    async submit() {
+      try {
+        await auth.createUserWithEmailAndPassword(this.email, this.password);
+        await this.$router.push({ name: "Register" });
+      } catch (error) {
+        this.error = "Pass must be 6 characters!";
+      }
+      await db
+        .collection("profiles")
+        .doc(this.user.uid)
+        .set({
+          ...this.userInfo,
         });
+      this.userInfo = this.createEmptyUserInfo();
 
-      firebase
-        .auth()
-        .onAuthStateChanged(function(user) {
-          if (user.emailVerified) {
-            this.$router.push({ name: "Home" });
-          } else {
-            user.sendEmailVerification();
-          }
-        })
-
-        .catch((err) => {
-          this.error = err.message;
-        });
+      await this.$router.push({ name: "Home" });
+    },
+    createEmptyUserInfo() {
+      return {
+        userName: null,
+        name: null,
+        gender: null,
+        birthdate: null,
+      };
     },
   },
 };

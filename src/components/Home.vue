@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <template v-if="user.loggedIn">
-      <h1>Hi, {{ user.data.displayName }}.</h1>
+    <template>
+      <h1>Hi,</h1>
     </template>
 
     <section>
@@ -46,36 +46,12 @@
         </div>
       </div>
     </section>
+
     <footer></footer>
   </div>
 </template>
 
-<script>
-import { mapGetters } from "vuex";
-import firebase from "firebase";
-
-export default {
-  name: "Home",
-  computed: {
-    ...mapGetters({
-      // map `this.user` to `this.$store.getters.user`
-      user: "user",
-    }),
-  },
-  methods: {
-    signOut() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          this.$router.push({
-            name: "Bye",
-          });
-        });
-    },
-  },
-};
-</script>
+<script></script>
 
 <style scoped>
 * {

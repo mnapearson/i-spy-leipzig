@@ -1,34 +1,46 @@
 import Vue from "vue";
-import App from "./App.vue";
-import router from "./routes/index";
-import { firebase } from "@firebase/app";
-import store from "./store";
+import App from "@/App.vue";
+import { auth } from "@/firebase";
+import { firestorePlugin } from "vuefire";
+import store from "@/store";
+import vSelect from "vue-select";
+import Vuelidate from "vuelidate";
+import router from "@/routes";
 
-Vue.config.productionTip = false;
+import "vue-select/dist/vue-select.css";
 
-// Your web app's Firebase configuration
-var configOptions = {
-  apiKey: "AIzaSyCIODgULKOSJiUDQ-VryqAW2UMMF1qBH94",
-  authDomain: "fir-auth-e18f6.firebaseapp.com",
-  projectId: "fir-auth-e18f6",
-  storageBucket: "fir-auth-e18f6.appspot.com",
-  messagingSenderId: "194089822349",
-  appId: "1:194089822349:web:43c273b46b7207d9721ac4",
-};
-// Initialize Firebase
-firebase.initializeApp(configOptions);
-
-firebase.auth().onAuthStateChanged((user) => {
-  store.dispatch("fetchUser", user);
+let markProfilesAsBound = null;
+let profileBoolean = false;
+export const boundProfiles = new Promise((resolve) => {
+  markProfilesAsBound = resolve;
 });
 
-const db = firebase.firestore();
-const auth = firebase.auth();
+let markFirebaseAuthAsConnected;
+let firebaseAuthBoolean = false;
+export const firebaseAuthConnected = new Promise((resolve) => {
+  markFirebaseAuthAsConnected = resolve;
+});
 
-const postsCollection = db.collection("posts");
-const likesCollection = db.collection("likes");
+auth.onAuthStateChanged(async (user) => {
+  if (firebaseAuthBoolean == false) {
+    markFirebaseAuthAsConnected();
+    firebaseAuthBoolean = true;
+  }
+  store.commit("SET_USER", user);
+  if (user) {
+    await store.dispatch("bindProfiles");
+    if (profileBoolean == false) {
+      markProfilesAsBound();
+      profileBoolean = true;
+    }
+  }
+});
 
-export { db, auth, postsCollection, likesCollection };
+Vue.component("v-select", vSelect);
+
+Vue.use(firestorePlugin);
+Vue.use(Vuelidate);
+Vue.config.productionTip = false;
 
 new Vue({
   router,

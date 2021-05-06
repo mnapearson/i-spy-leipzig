@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { auth } from "../main";
+import { auth } from "../firebase";
 
 export default {
   data() {

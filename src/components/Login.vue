@@ -1,12 +1,6 @@
 <template>
   <div>
-    <template v-if="user.loggedIn">
-      <h1>
-        Hi, {{ user.data.displayName }}. You are currently logged in ;) ...
-      </h1>
-      <Account></Account>
-    </template>
-    <template v-if="!user.loggedIn">
+    <template>
       <div class="container">
         <h1>Need to create an account?</h1>
         <button>
@@ -17,7 +11,7 @@
             <div class="card-header"><h1>Login</h1></div>
             <div class="card-body">
               <div v-if="error" class="alert alert-danger">{{ error }}</div>
-              <form action="#" @submit.prevent="submit">
+              <form @submit.prevent="submit">
                 <div class="form-group row">
                   <label
                     for="email"
@@ -34,7 +28,7 @@
                       value
                       required
                       autofocus
-                      v-model="form.email"
+                      v-model="email"
                     />
                   </div>
                 </div>
@@ -53,14 +47,16 @@
                       class="form-control"
                       name="password"
                       required
-                      v-model="form.password"
+                      v-model="password"
                     />
                   </div>
                 </div>
 
                 <div class="form-group row mb-0">
                   <div class="col-md-8 offset-md-4">
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-primary">
+                      Login
+                    </button>
                   </div>
                 </div>
                 <div class="extras">
@@ -81,43 +77,36 @@
 
 <script>
 import PasswordReset from "@/components/PasswordReset";
-import Account from "@/components/Account";
-import firebase from "firebase";
-import { mapGetters } from "vuex";
+import { auth } from "@/firebase";
+import { mapState } from "vuex";
+
 export default {
   components: {
     PasswordReset,
-    Account,
   },
   name: "Login",
   data() {
     return {
-      form: {
-        email: "",
-        password: "",
-      },
+      email: "",
+      password: "",
       error: null,
       showPasswordReset: false,
     };
   },
   computed: {
-    ...mapGetters({
-      // map `this.user` to `this.$store.getters.user`
-      user: "user",
-    }),
+    ...mapState(["user"]),
   },
   methods: {
     togglePasswordReset() {
       this.showPasswordReset = !this.showPasswordReset;
     },
-    submit() {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.form.email, this.form.password)
-        .then(this.$router.push({ name: "Home" }))
-        .catch((err) => {
-          this.error = err.message;
-        });
+    async submit() {
+      try {
+        await auth.signInWithEmailAndPassword(this.email, this.password);
+        await this.$router.push({ name: "Home" });
+      } catch (error) {
+        this.error = "Invalid email or password.";
+      }
     },
   },
 };

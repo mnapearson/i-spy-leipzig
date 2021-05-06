@@ -8,7 +8,7 @@ import Bye from "../components/Bye";
 import Spy from "../components/Spy";
 import Verify from "../components/Verify";
 import Account from "../components/Account";
-import { auth } from "../main";
+import { auth } from "../firebase";
 
 Vue.use(Router);
 
@@ -46,6 +46,9 @@ const router = new Router({
       path: "/spy",
       name: "Spy",
       component: Spy,
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
       path: "/verify",
