@@ -19,7 +19,6 @@
           />
           <datepicker
             :value="value"
-            @input="setDate"
             type="date"
             v-model="dateSpied"
             name="Date Spied"
@@ -90,7 +89,7 @@ export default {
         dateSpied: this.dateSpied,
         text: this.text,
         date: new Date(),
-        author: this.myProfile.id,
+        author: this.myProfile.userName,
       };
       try {
         await db.collection("posts").add(post);

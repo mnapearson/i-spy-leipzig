@@ -4,8 +4,6 @@
       <h1>Hi,</h1>
     </template>
 
-    <postSpy v-for="post in sortedPosts" :key="post.id"></postSpy>
-
     <section>
       <div class="main-container">
         <div class="filter">
@@ -18,32 +16,19 @@
             <div class="option gender">ALL</div>
           </div>
         </div>
-        <div class="posts">
+        <div class="posts" v-for="post in $store.state.posts" :key="post.id">
           <div class="col">Date & User</div>
 
           <div class="col">Post</div>
           <div class="row date">
-            <p>@Frenchie</p>
-            <p>25.04.21</p>
+            <p>@{{ post.author }}</p>
+            <p>{{ post.dateSpied.toDate().toLocaleDateString() }}</p>
             <button>reply</button>
           </div>
           <div class="row text">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis,
-            doloribus at totam iste unde iusto enim odit molestiae dicta ad
-            magni officia animi ullam laboriosam in soluta fuga accusantium sint
-            consectetur? Dicta sit impedit iste, aliquid voluptatum, repudiandae
-            ab magnam officiis reiciendis quisquam dolores necessitatibus ipsum
-            perspiciatis qui itaque optio.
-          </div>
-          <div class="row date">
-            <p>@SexyMicha</p>
-            <p>22.04.21</p>
-            <button>reply</button>
-          </div>
-          <div class="row text">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas
-            tempora ex consectetur necessitatibus? Inventore, magni voluptatibus
-            iste blanditiis reprehenderit sapiente.
+            <div class="post-title">{{ post.title }}</div>
+
+            <div class="post-text">{{ post.text }}</div>
           </div>
         </div>
       </div>
@@ -54,21 +39,16 @@
 </template>
 
 <script>
-import postSpy from "../components/Spy";
 import { mapState } from "vuex";
 
 export default {
   name: "Home",
   computed: {
     ...mapState(["posts"]),
-    sortedPosts() {
-      return this.posts.slice().sort((a, b) => {
-        return b.date.seconds - a.date.seconds;
-      });
+    allPosts() {
+      const allPosts = this.$store.state.posts;
+      return allPosts;
     },
-  },
-  components: {
-    postSpy: postSpy,
   },
 };
 </script>
@@ -158,6 +138,16 @@ section {
 
 .post-date {
   margin-top: 1rem;
+}
+
+.post-title {
+  text-decoration: underline;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.post-text {
+  text-transform: lowercase;
 }
 
 .row {

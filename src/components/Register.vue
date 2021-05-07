@@ -5,7 +5,6 @@
         <div>
           <h1>Register</h1>
           <div class="card-body">
-            <div v-if="error" class="alert alert-danger">{{ error }}</div>
             <form @submit.prevent="submit">
               <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right"
@@ -40,6 +39,22 @@
                     required
                     autofocus
                     v-model="userInfo.userName"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label
+                  for="username"
+                  class="col-md-4 col-form-label text-md-right"
+                  >Birthdate</label
+                >
+
+                <div class="col-md-6">
+                  <datepicker
+                    :value="value"
+                    v-model="userInfo.birthdate"
+                    class="mb-4 border-black w-full"
                   />
                 </div>
               </div>
@@ -94,9 +109,6 @@
                   <button type="submit" class="btn btn-primary">
                     Register
                   </button>
-                  <h4 v-if="error">
-                    {{ error }}
-                  </h4>
                 </div>
               </div>
             </form>
@@ -104,10 +116,15 @@
         </div>
       </div>
     </div>
+
+    <h4 v-if="error">
+      {{ error }}
+    </h4>
   </div>
 </template>
 
 <script>
+import Datepicker from "vuejs-datepicker";
 import { auth, db } from "@/firebase";
 import { mapState } from "vuex";
 import { required, minLength } from "vuelidate/lib/validators";
@@ -129,16 +146,29 @@ export default {
       minLength: minLength(6),
     },
   },
+  props: {
+    value: Date,
+  },
+  components: {
+    Datepicker,
+  },
   computed: {
     ...mapState(["user", "profile"]),
+    calculateAge: function() {
+      let currentDate = new Date();
+      let birthDate = this.userInfo.birthdate;
+      let difference = currentDate - birthDate;
+      let age = Math.floor(difference / 31557600000);
+      return age;
+    },
   },
   methods: {
     async submit() {
       try {
         await auth.createUserWithEmailAndPassword(this.email, this.password);
-        await this.$router.push({ name: "Register" });
+        await this.$router.push({ name: "Home" });
       } catch (error) {
-        this.error = "Pass must be 6 characters!";
+        this.error = "You have an account!";
       }
 
       await db
@@ -148,8 +178,6 @@ export default {
           ...this.userInfo,
         });
       this.userInfo = this.createEmptyUserInfo();
-
-      await this.$router.push({ name: "Home" });
     },
     createEmptyUserInfo() {
       return {
@@ -168,10 +196,18 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-top: 2rem;
 }
 
 button {
   margin-top: 1rem;
+}
+
+h4 {
+  font-size: 28px;
+  color: red;
+  margin: 3rem;
+  text-transform: uppercase;
 }
 </style>
