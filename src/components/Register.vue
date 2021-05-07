@@ -140,6 +140,7 @@ export default {
       } catch (error) {
         this.error = "Pass must be 6 characters!";
       }
+
       await db
         .collection("profiles")
         .doc(this.user.uid)

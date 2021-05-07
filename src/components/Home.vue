@@ -4,6 +4,8 @@
       <h1>Hi,</h1>
     </template>
 
+    <postSpy v-for="post in sortedPosts" :key="post.id"></postSpy>
+
     <section>
       <div class="main-container">
         <div class="filter">
@@ -51,7 +53,25 @@
   </div>
 </template>
 
-<script></script>
+<script>
+import postSpy from "../components/Spy";
+import { mapState } from "vuex";
+
+export default {
+  name: "Home",
+  computed: {
+    ...mapState(["posts"]),
+    sortedPosts() {
+      return this.posts.slice().sort((a, b) => {
+        return b.date.seconds - a.date.seconds;
+      });
+    },
+  },
+  components: {
+    postSpy: postSpy,
+  },
+};
+</script>
 
 <style scoped>
 * {

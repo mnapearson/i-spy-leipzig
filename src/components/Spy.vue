@@ -17,6 +17,14 @@
             name="Title"
             placeholder="Insert title here"
           />
+          <datepicker
+            :value="value"
+            @input="setDate"
+            type="date"
+            v-model="dateSpied"
+            name="Date Spied"
+            placeholder="When did you spy this 1..."
+          />
 
           <textarea
             rows="10"
@@ -39,21 +47,31 @@
 <script>
 import { mapState } from "vuex";
 import { db } from "@/firebase";
-import DOMPurify from "dompurify";
+import Datepicker from "vuejs-datepicker";
 
 export default {
-  name: "Home",
+  name: "postSpy",
   data() {
     return {
       myProfile: undefined,
       addPost: false,
       successMessage: false,
       title: "",
+      dateSpied: "",
       text: "",
     };
   },
+  props: {
+    value: Date,
+  },
+  components: {
+    Datepicker,
+  },
   computed: {
-    ...mapState(["posts"]),
+    ...mapState(["posts, profiles"]),
+    author() {
+      return this.profiles.find((profile) => profile.id == this.post.author);
+    },
     sortedPosts() {
       return this.posts.slice().sort((a, b) => {
         return b.date.seconds - a.date.seconds;
@@ -67,11 +85,10 @@ export default {
 
   methods: {
     async submitPost() {
-      const clean = DOMPurify.sanitize(this.text);
-
       const post = {
         title: this.title,
-        text: clean,
+        dateSpied: this.dateSpied,
+        text: this.text,
         date: new Date(),
         author: this.myProfile.id,
       };
@@ -85,6 +102,7 @@ export default {
         });
       }
       this.text = "";
+      this.dateSpied = "";
       this.title = "";
       this.addPost = false;
       this.successMessage = true;
@@ -123,5 +141,9 @@ textarea {
   display: flex;
   margin: 2rem;
   color: red;
+}
+
+.vdp-datepicker input[type="text"] {
+  width: 100%;
 }
 </style>
