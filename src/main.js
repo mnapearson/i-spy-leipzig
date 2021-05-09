@@ -6,6 +6,11 @@ import store from "@/store";
 import vSelect from "vue-select";
 import Vuelidate from "vuelidate";
 import router from "@/routes";
+import moment from "moment";
+
+import VueFilterDateFormat from "vue-filter-date-format";
+
+Vue.use(VueFilterDateFormat);
 
 import "vue-select/dist/vue-select.css";
 
@@ -13,6 +18,12 @@ let markProfilesAsBound = null;
 let profileBoolean = false;
 export const boundProfiles = new Promise((resolve) => {
   markProfilesAsBound = resolve;
+});
+
+let markPostsAsBound = null;
+let postBoolean = false;
+export const boundPosts = new Promise((resolve) => {
+  markPostsAsBound = resolve;
 });
 
 let markFirebaseAuthAsConnected;
@@ -34,9 +45,25 @@ auth.onAuthStateChanged(async (user) => {
       profileBoolean = true;
     }
   }
+  store.commit("SET_POSTS", user);
+  if (user) {
+    await store.dispatch("bindPosts");
+    if (postBoolean == false) {
+      markPostsAsBound();
+      postBoolean = true;
+    }
+  }
+});
+
+Vue.filter("formatDate", function(value) {
+  if (value) {
+    return moment(String(value)).format("MM/DD/YYYY");
+  }
 });
 
 Vue.component("v-select", vSelect);
+
+Vue.use(moment);
 
 Vue.use(firestorePlugin);
 Vue.use(Vuelidate);

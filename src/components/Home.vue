@@ -1,9 +1,5 @@
 <template>
   <div class="home">
-    <template>
-      <h1>Hi,</h1>
-    </template>
-
     <section>
       <div class="main-container">
         <div class="filter">
@@ -21,13 +17,17 @@
 
           <div class="col">Post</div>
           <div class="row date">
-            <p>@{{ post.author }}</p>
-            <p>{{ post.dateSpied.toDate().toLocaleDateString() }}</p>
+            <div class="post-author">
+              <p>@{{ post.author }}</p>
+            </div>
+            <div class="post-date">
+              <p>{{ post.dateSpied }}</p>
+              <p>{{ post.date }}</p>
+            </div>
             <button>reply</button>
           </div>
           <div class="row text">
             <div class="post-title">{{ post.title }}</div>
-
             <div class="post-text">{{ post.text }}</div>
           </div>
         </div>
@@ -43,6 +43,7 @@ import { mapState } from "vuex";
 
 export default {
   name: "Home",
+
   computed: {
     ...mapState(["posts"]),
     allPosts() {

@@ -16,13 +16,15 @@
             type="text"
             name="Title"
             placeholder="Insert title here"
+            required
           />
           <datepicker
             :value="value"
             type="date"
             v-model="dateSpied"
             name="Date Spied"
-            placeholder="When did you spy this 1..."
+            placeholder="When did you spy this special sum1..."
+            required
           />
 
           <textarea
@@ -32,6 +34,7 @@
             type="text"
             name="Create Post"
             placeholder="flex ur inner shakespeare..."
+            required
           ></textarea>
           <div class="button">
             <button class="button" @click="submitPost()">post</button
@@ -126,7 +129,7 @@ h1 {
 form {
   display: flex;
   flex-direction: column;
-  margin: 2rem;
+  margin: 2rem 3rem;
   color: red;
 }
 
@@ -140,9 +143,5 @@ textarea {
   display: flex;
   margin: 2rem;
   color: red;
-}
-
-.vdp-datepicker input[type="text"] {
-  width: 100%;
 }
 </style>

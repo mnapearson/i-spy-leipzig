@@ -41,6 +41,9 @@ const router = new Router({
       path: "/bye",
       name: "Bye",
       component: Bye,
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
       path: "/spy",
