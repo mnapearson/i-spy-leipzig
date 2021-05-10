@@ -8,10 +8,6 @@ import Vuelidate from "vuelidate";
 import router from "@/routes";
 import moment from "moment";
 
-import VueFilterDateFormat from "vue-filter-date-format";
-
-Vue.use(VueFilterDateFormat);
-
 import "vue-select/dist/vue-select.css";
 
 let markProfilesAsBound = null;
@@ -57,7 +53,7 @@ auth.onAuthStateChanged(async (user) => {
 
 Vue.filter("formatDate", function(value) {
   if (value) {
-    return moment(String(value)).format("MM/DD/YYYY");
+    return moment(String(value)).format("DD.MM");
   }
 });
 

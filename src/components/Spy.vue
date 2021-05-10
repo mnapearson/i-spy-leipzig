@@ -2,13 +2,11 @@
   <div>
     <template>
       <div class="top" v-if="successMessage">
-        <h1>Nice work.</h1>
+        <h1>Nice work. Head to the spy board to check out your post...</h1>
+        <button><router-link to="/">GO</router-link></button>
       </div>
-      <div class="top">
-        <h1>Did you spy someone?</h1>
-        <button @click="addPost = true">Yea ;]</button>
-      </div>
-      <div class="form" v-if="addPost">
+
+      <div class="form" v-if="successMessage == false">
         <form @submit.prevent>
           <input
             class="mb-4"
@@ -56,7 +54,6 @@ export default {
   data() {
     return {
       myProfile: undefined,
-      addPost: false,
       successMessage: false,
       title: "",
       dateSpied: "",
@@ -106,7 +103,6 @@ export default {
       this.text = "";
       this.dateSpied = "";
       this.title = "";
-      this.addPost = false;
       this.successMessage = true;
     },
   },
@@ -114,14 +110,6 @@ export default {
 </script>
 
 <style scoped>
-.top {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 2rem;
-}
-
 h1 {
   margin: 2rem;
 }

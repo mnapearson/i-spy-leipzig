@@ -13,7 +13,7 @@
         <router-link class="link" to="/login">HI</router-link>
       </button>
       <button class="link" @click.prevent="signOut">
-        BYE
+        <router-link class="link" to="/bye"> BYE</router-link>
       </button>
     </footer>
     <router-view />
