@@ -8,9 +8,7 @@
       <button>
         <router-link class="link" to="spy">SPY SUM1</router-link></button
       ><button>
-        <router-link class="link" to="/About">INFO</router-link></button
-      ><button>
-        <router-link class="link" to="/login">HI</router-link>
+        <router-link class="link" to="/About">INFO</router-link>
       </button>
       <button class="link" @click.prevent="signOut">
         <router-link class="link" to="/bye"> BYE</router-link>
@@ -43,6 +41,10 @@ export default {
 * {
   margin: 0 auto;
   font-family: "Roboto Mono", monospace;
+}
+
+button {
+  text-transform: uppercase;
 }
 
 header img {

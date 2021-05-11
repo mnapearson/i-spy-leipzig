@@ -1,12 +1,9 @@
 <template>
   <div class="home">
     <section>
-      <!-- <div class="top">
-        <h1>Hey you, did you spy someone?</h1>
-        <button>
-          <router-link class="post-spy" to="Spy">Post Ur Spy</router-link>
-        </button>
-      </div> -->
+      <div class="top" v-if="!user">
+        <Login></Login>
+      </div>
       <div class="main-container">
         <div class="filter">
           <div class="title">Filter By</div>
@@ -19,17 +16,20 @@
           </div>
         </div>
         <div class="posts-title">
-          <div class="col">Date & User</div>
+          <div class="col">Date & Spy</div>
           <div class="col">Post</div>
         </div>
         <div class="posts" v-for="post in $store.state.posts" :key="post.id">
           <div class="row date">
-            <div class="post-author">
-              <p>@{{ post.author }}</p>
-            </div>
             <div class="post-date">
-              <p>{{ post.dateSpied.toDate() | formatDate }}</p>
+              <p>{{ post.date.toDate() | formatDate }}</p>
             </div>
+            <div class="post-author">
+              <p>
+                @{{ post.author }} <br />({{ post.age }}, {{ post.gender }})
+              </p>
+            </div>
+
             <button class="reply">reply</button>
           </div>
           <div class="row text">
@@ -46,16 +46,15 @@
 
 <script>
 import { mapState } from "vuex";
+import Login from "./Login";
 
 export default {
   name: "Home",
-  data() {
-    return {
-      myDate: "12-23-1987",
-    };
+  components: {
+    Login,
   },
   computed: {
-    ...mapState(["posts", "profiles"]),
+    ...mapState(["posts", "profiles", "user"]),
     allPosts() {
       const allPosts = this.$store.state.posts;
       return allPosts;
@@ -86,6 +85,10 @@ h1 {
 
 .top button {
   margin-top: 1rem;
+}
+
+.post-author {
+  text-align: center;
 }
 
 .post-spy {
@@ -182,10 +185,6 @@ section {
   width: 100%;
 }
 
-.post-date {
-  margin-top: 1rem;
-}
-
 .post-title {
   text-decoration: underline;
   margin-bottom: 0.5rem;
@@ -197,7 +196,11 @@ section {
 }
 
 .row {
+  display: flex;
+  flex-direction: column;
   margin-top: 2rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .row p {

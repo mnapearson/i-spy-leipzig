@@ -3,7 +3,6 @@
     <template>
       <div class="top" v-if="successMessage">
         <h1>Nice work. Head to the spy board to check out your post...</h1>
-        <button><router-link to="/">GO</router-link></button>
       </div>
 
       <div class="form" v-if="successMessage == false">
@@ -14,14 +13,6 @@
             type="text"
             name="Title"
             placeholder="Insert title here"
-            required
-          />
-          <datepicker
-            :value="value"
-            type="date"
-            v-model="dateSpied"
-            name="Date Spied"
-            placeholder="When did you spy this special sum1..."
             required
           />
 
@@ -47,7 +38,6 @@
 <script>
 import { mapState } from "vuex";
 import { db } from "@/firebase";
-import Datepicker from "vuejs-datepicker";
 
 export default {
   name: "postSpy",
@@ -63,9 +53,7 @@ export default {
   props: {
     value: Date,
   },
-  components: {
-    Datepicker,
-  },
+
   computed: {
     ...mapState(["posts, profiles"]),
     author() {
@@ -86,22 +74,18 @@ export default {
     async submitPost() {
       const post = {
         title: this.title,
-        dateSpied: this.dateSpied,
         text: this.text,
         date: new Date(),
         author: this.myProfile.userName,
+        age: this.myProfile.age,
+        gender: this.myProfile.gender,
       };
       try {
         await db.collection("posts").add(post);
       } catch (error) {
         console.log(error);
-        this.$store.dispatch("notify", {
-          type: "error",
-          text: "Ooops! Something went wrong...",
-        });
       }
       this.text = "";
-      this.dateSpied = "";
       this.title = "";
       this.successMessage = true;
     },

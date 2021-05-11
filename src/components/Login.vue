@@ -2,10 +2,7 @@
   <div>
     <template>
       <div class="container">
-        <h1>Need to create an account?</h1>
-        <button>
-          <router-link class="link" to="/Register">REGISTER</router-link>
-        </button>
+        <h1>Hey, time to start spying...</h1>
         <div class="login">
           <div class="card">
             <div class="card-header"><h1>Login</h1></div>
@@ -73,6 +70,10 @@
             </div>
           </div>
         </div>
+        <h1>Need to create an account?</h1>
+        <button>
+          <router-link class="link" to="/Register">REGISTER</router-link>
+        </button>
       </div>
     </template>
   </div>
@@ -126,12 +127,12 @@ export default {
 .login {
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
+  margin: 2rem;
   justify-content: center;
 }
 
 .extras {
-  margin-top: 2rem;
+  margin: 2rem;
 }
 
 button {

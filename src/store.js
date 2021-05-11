@@ -2,10 +2,18 @@ import { auth, db } from "@/firebase";
 import Vue from "vue";
 import Vuex from "vuex";
 import { vuexfireMutations, firestoreAction } from "vuexfire";
+import moment from "moment";
 
 import router from "@/routes";
 
 Vue.use(Vuex);
+Vue.use(moment);
+
+Vue.filter("formatDate", function(value) {
+  if (value) {
+    return moment(String(value)).format("DD.MM");
+  }
+});
 
 export default new Vuex.Store({
   state: {

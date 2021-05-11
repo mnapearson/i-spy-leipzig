@@ -6,7 +6,6 @@ import store from "@/store";
 import vSelect from "vue-select";
 import Vuelidate from "vuelidate";
 import router from "@/routes";
-import moment from "moment";
 
 import "vue-select/dist/vue-select.css";
 
@@ -51,15 +50,7 @@ auth.onAuthStateChanged(async (user) => {
   }
 });
 
-Vue.filter("formatDate", function(value) {
-  if (value) {
-    return moment(String(value)).format("DD.MM");
-  }
-});
-
 Vue.component("v-select", vSelect);
-
-Vue.use(moment);
 
 Vue.use(firestorePlugin);
 Vue.use(Vuelidate);

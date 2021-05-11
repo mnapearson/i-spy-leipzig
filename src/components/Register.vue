@@ -44,66 +44,110 @@
               </div>
 
               <div class="form-group row">
-                <label
-                  for="username"
-                  class="col-md-4 col-form-label text-md-right"
-                  >Birthdate</label
+                <label for="age" class="col-md-4 col-form-label text-md-right"
+                  >Age</label
                 >
 
                 <div class="col-md-6">
-                  <datepicker
-                    :value="value"
-                    v-model="userInfo.birthdate"
+                  <input
+                    v-model="userInfo.age"
                     class="mb-4 border-black w-full"
+                    required
                   />
                 </div>
               </div>
+              <div id="gender" class="form-group">
+                <label>If you want to identify as:</label>
+                <br />
 
-              <div class="form-group row">
-                <label for="email" class="col-md-4 col-form-label text-md-right"
-                  >Email</label
-                >
-
-                <div class="col-md-6">
+                <div class="custom-control custom-radio custom-control-inline">
                   <input
-                    id="email"
-                    type="email"
-                    class="form-control"
-                    name="email"
-                    value
-                    required
-                    autofocus
-                    v-model="email"
+                    type="radio"
+                    id="gender-f"
+                    name="gender"
+                    class="custom-control-input"
+                    value="female"
+                    v-model="userInfo.gender"
                   />
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label
-                  for="password"
-                  class="col-md-4 col-form-label text-md-right"
-                  >Password</label
-                >
-
-                <div class="col-md-6">
-                  <input
-                    id="password"
-                    type="password"
-                    class="form-control"
-                    name="password"
-                    required
-                    v-model="password"
-                  />
-                  <div
-                    v-if="!$v.password.minLength && $v.password.$dirty"
-                    class="error"
+                  <label class="custom-control-label" for="gender-f"
+                    >Female</label
                   >
-                    Password must have at least
-                    {{ $v.password.$params.minLength.min }} charachters.
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input
+                    type="radio"
+                    id="gender-m"
+                    name="gender"
+                    class="custom-control-input"
+                    value="male"
+                    v-model="userInfo.gender"
+                  />
+                  <label class="custom-control-label" for="gender-m"
+                    >Male</label
+                  >
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input
+                    type="radio"
+                    id="gender-na"
+                    name="gender"
+                    class="custom-control-input"
+                    value="non-binary"
+                    v-model="userInfo.gender"
+                  />
+                  <label class="custom-control-label" for="gender-na"
+                    >Non-binary</label
+                  >
+                </div>
+              </div>
+              <div class="email-info">
+                <div class="form-group">
+                  <label
+                    for="email"
+                    class="col-md-4 col-form-label text-md-right"
+                    >Email</label
+                  >
+
+                  <div class="col-md-6">
+                    <input
+                      id="email"
+                      type="email"
+                      class="form-control"
+                      name="email"
+                      value
+                      required
+                      autofocus
+                      v-model="email"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label
+                    for="password"
+                    class="col-md-4 col-form-label text-md-right"
+                    >Password</label
+                  >
+
+                  <div class="col-md-6">
+                    <input
+                      id="password"
+                      type="password"
+                      class="form-control"
+                      name="password"
+                      required
+                      v-model="password"
+                    />
+                    <div
+                      v-if="!$v.password.minLength && $v.password.$dirty"
+                      class="error"
+                    >
+                      Password must have at least
+                      {{ $v.password.$params.minLength.min }} charachters.
+                    </div>
                   </div>
                 </div>
               </div>
-
               <div class="form-group row mb-0">
                 <div class="col-md-8 offset-md-4">
                   <button type="submit" class="btn btn-primary">
@@ -124,13 +168,13 @@
 </template>
 
 <script>
-import Datepicker from "vuejs-datepicker";
 import { auth, db } from "@/firebase";
 import { mapState } from "vuex";
 import { required, minLength } from "vuelidate/lib/validators";
 
 export default {
   name: "Register",
+
   data() {
     return {
       error: null,
@@ -149,18 +193,9 @@ export default {
   props: {
     value: Date,
   },
-  components: {
-    Datepicker,
-  },
+
   computed: {
     ...mapState(["user", "profile"]),
-    calculateAge: function() {
-      let currentDate = new Date();
-      let birthDate = this.userInfo.birthdate;
-      let difference = currentDate - birthDate;
-      let age = Math.floor(difference / 31557600000);
-      return age;
-    },
   },
   methods: {
     async submit() {
@@ -184,7 +219,7 @@ export default {
         userName: null,
         name: null,
         gender: null,
-        birthdate: null,
+        age: null,
       };
     },
   },
@@ -200,6 +235,14 @@ export default {
   margin-top: 2rem;
 }
 
+h1 {
+  margin-bottom: 1rem;
+}
+
+input {
+  margin: 0.5rem 0;
+}
+
 button {
   margin-top: 1rem;
 }
@@ -209,5 +252,9 @@ h4 {
   color: red;
   margin: 3rem;
   text-transform: uppercase;
+}
+
+.email-info {
+  margin-top: 3rem;
 }
 </style>
