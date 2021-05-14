@@ -15,7 +15,13 @@
             placeholder="Insert title here"
             required
           />
-
+          <input
+            class="mb-4"
+            v-model="dateSpied"
+            type="date"
+            name="DateSpied"
+            placeholder="When did you spy this person?"
+          />
           <textarea
             rows="10"
             v-model="text"
@@ -25,9 +31,9 @@
             placeholder="flex ur inner shakespeare..."
             required
           ></textarea>
+
           <div class="button">
-            <button class="button" @click="submitPost()">post</button
-            ><button @click="addPost = false">nah</button>
+            <button class="button" @click="submitPost()">post</button>
           </div>
         </form>
       </div>
@@ -38,6 +44,7 @@
 <script>
 import { mapState } from "vuex";
 import { db } from "@/firebase";
+import { required } from "vuelidate/lib/validators";
 
 export default {
   name: "postSpy",
@@ -49,6 +56,14 @@ export default {
       dateSpied: "",
       text: "",
     };
+  },
+  validations: {
+    title: {
+      required,
+    },
+    text: {
+      required,
+    },
   },
   props: {
     value: Date,
@@ -76,6 +91,7 @@ export default {
         title: this.title,
         text: this.text,
         date: new Date(),
+        dateSpied: this.dateSpied,
         author: this.myProfile.userName,
         age: this.myProfile.age,
         gender: this.myProfile.gender,
@@ -87,6 +103,7 @@ export default {
       }
       this.text = "";
       this.title = "";
+      this.dateSpied = "";
       this.successMessage = true;
     },
   },
@@ -115,5 +132,13 @@ textarea {
   display: flex;
   margin: 2rem;
   color: red;
+}
+
+.top {
+  display: flex;
+  max-width: 50%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 </style>

@@ -5,9 +5,7 @@
         <h1>Hey, time to start spying...</h1>
         <div class="login">
           <div class="card">
-            <div class="card-header"><h1>Login</h1></div>
             <div class="card-body">
-              <div v-if="error" class="alert alert-danger">{{ error }}</div>
               <form @submit.prevent="submit">
                 <div class="form-group row">
                   <label
@@ -137,5 +135,10 @@ export default {
 
 button {
   margin-top: 1rem;
+}
+
+h4 {
+  margin-top: 2rem;
+  color: red;
 }
 </style>

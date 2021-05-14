@@ -11,7 +11,7 @@
         <router-link class="link" to="/About">INFO</router-link>
       </button>
       <button class="link" @click.prevent="signOut">
-        <router-link class="link" to="/bye"> BYE</router-link>
+        BYE
       </button>
     </footer>
     <router-view />
@@ -41,6 +41,8 @@ export default {
 * {
   margin: 0 auto;
   font-family: "Roboto Mono", monospace;
+  cursor: url("https://images.vexels.com/media/users/3/156668/isolated/preview/3427d847b00ed3977d08efe50758c37b-cupid-s-arrow-heart-icon-by-vexels.png"),
+    default;
 }
 
 button {

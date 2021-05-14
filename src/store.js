@@ -3,7 +3,6 @@ import Vue from "vue";
 import Vuex from "vuex";
 import { vuexfireMutations, firestoreAction } from "vuexfire";
 import moment from "moment";
-
 import router from "@/routes";
 
 Vue.use(Vuex);

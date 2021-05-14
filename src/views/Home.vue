@@ -4,17 +4,8 @@
       <div class="top" v-if="!user">
         <Login></Login>
       </div>
+      <PostFilter></PostFilter>
       <div class="main-container">
-        <div class="filter">
-          <div class="title">Filter By</div>
-          <div class="filter-buttons">
-            <div class="option date">Date</div>
-            <div class="option place">Place</div>
-            <div class="option gender">ALL</div>
-            <div class="detail">saw</div>
-            <div class="option gender">ALL</div>
-          </div>
-        </div>
         <div class="posts-title">
           <div class="col">Date & Spy</div>
           <div class="col">Post</div>
@@ -30,10 +21,15 @@
               </p>
             </div>
 
-            <button class="reply">reply</button>
+            <button class="reply">
+              <router-link to="/messages">reply</router-link>
+            </button>
           </div>
           <div class="row text">
-            <div class="post-title">{{ post.title }}</div>
+            <div class="post-title">
+              {{ post.title }}
+              <p>{{ post.dateSpied | formatDate }}</p>
+            </div>
             <div class="post-text">{{ post.text }}</div>
           </div>
         </div>
@@ -46,12 +42,14 @@
 
 <script>
 import { mapState } from "vuex";
-import Login from "./Login";
+import Login from "../components/Login";
+import PostFilter from "../components/PostFilter";
 
 export default {
   name: "Home",
   components: {
     Login,
+    PostFilter,
   },
   computed: {
     ...mapState(["posts", "profiles", "user"]),
@@ -112,46 +110,6 @@ section {
   margin-bottom: 2rem;
 }
 
-.filter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.title {
-  display: flex;
-  border: 1px solid red;
-  background-color: red;
-  color: white;
-  padding: 0.5rem;
-  width: 100%;
-}
-
-.filter-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  margin: 0.5rem;
-}
-
-.option:hover {
-  background: red;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.option {
-  padding: 0.5rem;
-  margin: 0.5rem;
-  width: 75px;
-  border: 1px solid red;
-  text-align: center;
-}
-
 .posts {
   display: grid;
   grid-template-columns: 2fr 4fr;
@@ -177,6 +135,11 @@ section {
   margin: 1rem 0 2rem;
 }
 
+.reply a {
+  text-decoration: none;
+  color: black;
+}
+
 .col {
   display: flex;
   background-color: red;
@@ -185,7 +148,13 @@ section {
   width: 100%;
 }
 
+.post-title p {
+  font-weight: normal;
+  padding-left: 1rem;
+}
+
 .post-title {
+  display: flex;
   text-decoration: underline;
   margin-bottom: 0.5rem;
   font-weight: bold;

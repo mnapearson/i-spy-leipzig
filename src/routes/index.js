@@ -1,14 +1,13 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Login from "../components/Login";
-import Register from "../components/Register";
-import About from "../components/About";
-import Home from "../components/Home";
-import Bye from "../components/Bye";
-import Spy from "../components/Spy";
-import Verify from "../components/Verify";
-import Account from "../components/Account";
-import Messages from "../components/Messages";
+import Register from "../views/Register";
+import About from "../views/About";
+import Home from "../views/Home";
+import Bye from "../views/Bye";
+import Spy from "../views/Spy";
+import Verify from "../views/Verify";
+import Account from "../views/Account";
+import Messages from "../views/Messages";
 import { auth } from "../firebase";
 
 Vue.use(Router);
@@ -21,11 +20,6 @@ const router = new Router({
       path: "/",
       name: "Home",
       component: Home,
-    },
-    {
-      path: "/login",
-      name: "login",
-      component: Login,
     },
     {
       path: "/register",
@@ -42,9 +36,6 @@ const router = new Router({
       path: "/bye",
       name: "Bye",
       component: Bye,
-      meta: {
-        requiresAuth: true,
-      },
     },
     {
       path: "/spy",
@@ -82,7 +73,7 @@ router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some((x) => x.meta.requiresAuth);
 
   if (requiresAuth && !auth.currentUser) {
-    next("/login");
+    next("/");
   } else {
     next();
   }

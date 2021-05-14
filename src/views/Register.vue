@@ -201,10 +201,19 @@ export default {
     async submit() {
       try {
         await auth.createUserWithEmailAndPassword(this.email, this.password);
-        await this.$router.push({ name: "Home" });
+
+        await this.$router.push({ name: "Verify" });
       } catch (error) {
         this.error = "You have an account!";
       }
+
+      await auth.onAuthStateChanged((firebaseUser) => {
+        if (firebaseUser) {
+          firebaseUser.sendEmailVerification();
+        } else {
+          this.error = "You have an acccount!";
+        }
+      });
 
       await db
         .collection("profiles")
