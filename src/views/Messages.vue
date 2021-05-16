@@ -1,11 +1,10 @@
 <template>
   <div>
-    <div v-if="!username">
-      You can't chat without a name. What's your name? <br />
-      <input type="text" placeholder="Name" v-on:keyup.enter="updateUsername" />
+    <div class="title">
+      Title: <br />
+      <input type="text" placeholder="Title" v-model="title" />
     </div>
-    <div v-else>
-      From : {{ username }}<br />
+    <div class="message">
       Message:<br />
       <textarea
         name=""
@@ -13,13 +12,17 @@
         cols="30"
         rows="10"
         placeholder="New Message"
-        v-on:keyup.enter="sendMessage"
+        v-model="message"
       ></textarea>
+    </div>
+    <button @click="sendMessage">send</button>
+    <div class="top" v-if="successMessage">
+      <h1>Message sent.</h1>
     </div>
     <div class="messages">
       <h3>Messages</h3>
-      <div :key="message.id" v-for="message in messages">
-        <strong>{{ message.username }}</strong>
+      <div v-for="message in $store.state.messages" :key="message.id">
+        <strong>{{ message.title }}</strong>
         <p>{{ message.text }}</p>
       </div>
     </div>
@@ -27,56 +30,54 @@
 </template>
 
 <script>
-import fire from "firebase";
+import { db } from "@/firebase";
+import { mapState } from "vuex";
 export default {
   name: "messages",
   data() {
     return {
-      username: "",
-      messages: [],
+      title: "",
+      message: "",
+      successMessage: false,
     };
   },
   methods: {
-    updateUsername(e) {
-      e.preventDefault();
-      if (e.target.value) {
-        this.username = e.target.value;
-      }
+    sendMessage() {
+      const message = {
+        title: this.title,
+        text: this.message,
+        date: new Date(),
+        author: this.myProfile.userName,
+      };
+      db.collection("message").add(message);
+      this.message = "";
+      this.title = "";
+      this.successMessage = true;
     },
-    sendMessage(e) {
-      e.preventDefault();
-      if (e.target.value) {
-        const message = {
-          username: this.username,
-          text: e.target.value,
-        };
-        // To-Do: Push message to firebase
-        fire
-          .database()
-          .ref("messages")
-          .push(message);
-
-        e.target.value = "";
-      }
+  },
+  computed: {
+    ...mapState(["posts", "profiles", "user", "messages"]),
+    userMessages() {
+      const userMessages = this.$store.state.messages;
+      return userMessages;
     },
   },
   mounted() {
-    let vm = this;
-    const itemsRef = fire.database().ref("messages");
-    itemsRef.on("value", (snapshot) => {
-      let data = snapshot.val();
-      let messages = [];
-      Object.keys(data).forEach((key) => {
-        messages.push({
-          id: key,
-          username: data[key].username,
-          text: data[key].text,
-        });
-      });
-      vm.messages = messages;
-    });
+    this.myProfile = this.$store.getters.myProfile;
+    this.$store.dispatch("bindMessages");
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+* {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  color: red;
+}
+</style>

@@ -21,6 +21,12 @@ export const boundPosts = new Promise((resolve) => {
   markPostsAsBound = resolve;
 });
 
+let markMessagesAsBound = null;
+let messageBoolean = false;
+export const boundMessages = new Promise((resolve) => {
+  markMessagesAsBound = resolve;
+});
+
 let markFirebaseAuthAsConnected;
 let firebaseAuthBoolean = false;
 export const firebaseAuthConnected = new Promise((resolve) => {
@@ -39,9 +45,13 @@ auth.onAuthStateChanged(async (user) => {
       markProfilesAsBound();
       profileBoolean = true;
     }
-  }
-  store.commit("SET_POSTS", user);
-  if (user) {
+
+    await store.dispatch("bindMessages");
+    if (messageBoolean == false) {
+      markMessagesAsBound();
+      messageBoolean = true;
+    }
+
     await store.dispatch("bindPosts");
     if (postBoolean == false) {
       markPostsAsBound();

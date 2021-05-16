@@ -35,6 +35,7 @@ export default new Vuex.Store({
       if (!user) {
         state.profiles = [];
         state.posts = [];
+        state.messages = [];
       }
     },
     SET_LOGGED_IN(state, value) {
@@ -53,6 +54,9 @@ export default new Vuex.Store({
     ),
     bindPosts: firestoreAction(({ bindFirestoreRef }) =>
       bindFirestoreRef("posts", db.collection("posts"))
+    ),
+    bindMessages: firestoreAction(({ bindFirestoreRef }) =>
+      bindFirestoreRef("messages", db.collection("messages"))
     ),
   },
 });

@@ -31,6 +31,7 @@
               <p>{{ post.dateSpied | formatDate }}</p>
             </div>
             <div class="post-text">{{ post.text }}</div>
+            <div class="">{{ post.likes }}</div>
           </div>
         </div>
       </div>
