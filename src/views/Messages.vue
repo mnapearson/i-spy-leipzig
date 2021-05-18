@@ -19,13 +19,6 @@
     <div class="top" v-if="successMessage">
       <h1>Message sent.</h1>
     </div>
-    <div class="messages">
-      <h3>Messages</h3>
-      <div v-for="message in $store.state.messages" :key="message.id">
-        <strong>{{ message.title }}</strong>
-        <p>{{ message.text }}</p>
-      </div>
-    </div>
   </div>
 </template>
 
