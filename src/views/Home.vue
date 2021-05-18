@@ -4,13 +4,17 @@
       <div class="top" v-if="!user">
         <Login></Login>
       </div>
+
+      <div class="top" v-if="user">
+        Hi, {{ this.$store.getters.myProfile.userName }}, have you been spied?
+      </div>
       <PostFilter></PostFilter>
       <div class="main-container">
         <div class="posts-title">
-          <div class="col">Date & Spy</div>
+          <div class="col">Spy</div>
           <div class="col">Post</div>
         </div>
-        <div class="posts" v-for="post in $store.state.posts" :key="post.id">
+        <div class="posts" v-for="post in sortedPosts" :key="post.id">
           <div class="row date">
             <div class="post-date">
               <p>{{ post.date.toDate() | formatDate }}</p>
@@ -48,6 +52,7 @@ import PostFilter from "../components/PostFilter";
 
 export default {
   name: "Home",
+
   components: {
     Login,
     PostFilter,
@@ -58,6 +63,17 @@ export default {
       const allPosts = this.$store.state.posts;
       return allPosts;
     },
+    sortedPosts() {
+      return this.posts.slice().sort((a, b) => {
+        return b.date.seconds - a.date.seconds;
+      });
+    },
+    author() {
+      return this.profiles.find((profile) => profile.id == this.post.author);
+    },
+  },
+  mounted() {
+    this.myProfile = this.$store.getters.myProfile;
   },
 };
 </script>

@@ -74,11 +74,6 @@ export default {
     author() {
       return this.profiles.find((profile) => profile.id == this.post.author);
     },
-    sortedPosts() {
-      return this.posts.slice().sort((a, b) => {
-        return b.date.seconds - a.date.seconds;
-      });
-    },
   },
   mounted() {
     this.myProfile = this.$store.getters.myProfile;
