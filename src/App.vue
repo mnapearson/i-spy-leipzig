@@ -10,7 +10,11 @@
       ><button>
         <router-link class="link" to="/About">INFO</router-link>
       </button>
-      <button class="link" @click.prevent="signOut">
+
+      <button>
+        <router-link class="link" to="/Account">Account</router-link>
+      </button>
+      <button v-if="user" class="link" @click.prevent="signOut">
         BYE
       </button>
     </footer>
@@ -20,8 +24,12 @@
 
 <script>
 import firebase from "firebase";
+import { mapState } from "vuex";
 
 export default {
+  computed: {
+    ...mapState(["user", "posts"]),
+  },
   methods: {
     signOut() {
       firebase
@@ -33,6 +41,9 @@ export default {
           });
         });
     },
+  },
+  mounted() {
+    this.$store.dispatch("bindPosts");
   },
 };
 </script>

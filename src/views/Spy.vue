@@ -5,7 +5,7 @@
         <h1>Nice work. Head to the spy board to check out your post...</h1>
       </div>
 
-      <div class="form" v-if="successMessage == false">
+      <div v-if="successMessage == false" class="form">
         <form @submit.prevent>
           <input
             class="mb-4"
@@ -48,6 +48,7 @@ import { required } from "vuelidate/lib/validators";
 
 export default {
   name: "postSpy",
+
   data() {
     return {
       myProfile: undefined,
@@ -70,7 +71,7 @@ export default {
   },
 
   computed: {
-    ...mapState(["posts, profiles"]),
+    ...mapState(["posts, profiles", "users"]),
     author() {
       return this.profiles.find((profile) => profile.id == this.post.author);
     },

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <template>
+    <template v-if="!user">
       <div class="container">
-        <h1>Hey, time to start spying...</h1>
+        <h1>Time to start spying...</h1>
         <div class="login">
           <div class="card">
             <div class="card-body">

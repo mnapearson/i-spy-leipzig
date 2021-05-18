@@ -51,7 +51,6 @@ auth.onAuthStateChanged(async (user) => {
       markMessagesAsBound();
       messageBoolean = true;
     }
-
     await store.dispatch("bindPosts");
     if (postBoolean == false) {
       markPostsAsBound();

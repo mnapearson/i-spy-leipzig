@@ -1,10 +1,6 @@
 <template>
   <div class="home">
     <section>
-      <div class="top" v-if="!user">
-        <Login></Login>
-      </div>
-
       <div class="top" v-if="user">
         Hi, {{ this.$store.getters.myProfile.userName }}, have you been spied?
       </div>
@@ -47,14 +43,12 @@
 
 <script>
 import { mapState } from "vuex";
-import Login from "../components/Login";
 import PostFilter from "../components/PostFilter";
 
 export default {
   name: "Home",
 
   components: {
-    Login,
     PostFilter,
   },
   computed: {
