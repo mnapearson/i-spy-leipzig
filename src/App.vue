@@ -11,11 +11,8 @@
         <router-link class="link" to="/About">INFO</router-link>
       </button>
 
-      <button>
+      <button v-if="user">
         <router-link class="link" to="/Account">Account</router-link>
-      </button>
-      <button v-if="user" class="link" @click.prevent="signOut">
-        BYE
       </button>
     </footer>
     <router-view />
