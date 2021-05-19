@@ -1,6 +1,15 @@
 <template>
   <div id="app">
-    <header><img src="./assets/ISPYBANNER.png" alt="" /></header>
+    <header>
+      <div
+        class="backdrop"
+        :style="{
+          'background-image': 'url(' + require('./assets/ispyback.png') + ')',
+        }"
+      >
+        <p class="title">I SPY LEIPZIG</p>
+      </div>
+    </header>
     <footer>
       <button>
         <router-link class="link" to="/">SPY BOARD</router-link>
@@ -49,17 +58,26 @@ export default {
 * {
   margin: 0 auto;
   font-family: "Roboto Mono", monospace;
-  cursor: url("https://images.vexels.com/media/users/3/156668/isolated/preview/3427d847b00ed3977d08efe50758c37b-cupid-s-arrow-heart-icon-by-vexels.png"),
-    default;
 }
 
 button {
   text-transform: uppercase;
 }
 
-header img {
-  width: 100%;
-  height: 100%;
+.backdrop {
+}
+
+.title {
+  background-color: #ebebeb;
+  display: flex;
+  justify-content: center;
+  color: black;
+  mix-blend-mode: screen;
+  width: 100vw;
+  font-size: 60pt;
+  font-weight: bolder;
+  text-align: center;
+  -webkit-text-stroke: 4px red;
 }
 
 footer {
