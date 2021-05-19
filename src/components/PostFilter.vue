@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="filter">
-      <div class="title">Filter By</div>
+      <div class="post-title">Filter By</div>
       <div class="filter-buttons">
         <div class="option date">Date Spied</div>
         <div class="option place">Place</div>
@@ -28,7 +28,7 @@ export default {
   width: 100%;
 }
 
-.title {
+.post-title {
   display: flex;
   border: 1px solid red;
   background-color: red;
