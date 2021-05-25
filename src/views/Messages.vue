@@ -1,29 +1,33 @@
 <template>
   <div>
-    <div class="title">
-      Title: <br />
-      <input type="text" placeholder="Title" v-model="title" />
+    <div v-if="!user">
+      <Login></Login>
     </div>
-    <div class="message">
-      Message:<br />
-      <textarea
-        name=""
-        id=""
-        cols="30"
-        rows="10"
-        placeholder="New Message"
-        v-model="message"
-      ></textarea>
-    </div>
-    <button @click="sendMessage">send</button>
-    <div class="top" v-if="successMessage">
-      <h1>Message sent.</h1>
+    <div class="message-form" v-if="user">
+      <div class="message-title">
+        <input type="text" placeholder="Title" v-model="title" />
+      </div>
+      <div class="message-text">
+        <textarea
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+          placeholder="Message"
+          v-model="message"
+        ></textarea>
+      </div>
+      <button @click="sendMessage">send</button>
+      <div class="top" v-if="successMessage">
+        <h1>Message sent.</h1>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { db } from "@/firebase";
+import Login from "../components/Login";
 import { mapState } from "vuex";
 export default {
   name: "messages",
@@ -33,6 +37,9 @@ export default {
       message: "",
       successMessage: false,
     };
+  },
+  components: {
+    Login,
   },
   methods: {
     sendMessage() {
@@ -64,7 +71,6 @@ export default {
 
 <style scoped>
 * {
-  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,5 +78,14 @@ export default {
 
 h1 {
   color: red;
+}
+
+.message-form {
+  margin-top: 3rem;
+}
+
+.message-title input {
+  margin-bottom: 1rem;
+  width: 250px;
 }
 </style>

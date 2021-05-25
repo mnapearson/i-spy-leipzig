@@ -34,7 +34,6 @@ export default new Vuex.Store({
       state.user = user;
       if (!user) {
         state.profiles = [];
-        state.posts = [];
         state.messages = [];
       }
     },

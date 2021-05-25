@@ -3,7 +3,7 @@
     <div v-if="!user">
       <Login></Login>
     </div>
-    <div v-if="user">
+    <div class="account" v-if="user">
       <h2>your account settings</h2>
       <button @click.prevent="signOut">BYE</button>
     </div>
@@ -39,4 +39,18 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.account {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  margin-top: 3rem;
+  height: 30px;
+  width: 50px;
+}
+</style>

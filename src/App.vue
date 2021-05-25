@@ -62,29 +62,25 @@ export default {
 
 button {
   text-transform: uppercase;
-}
-
-.backdrop {
+  margin: 0.5rem;
 }
 
 .title {
-  background-color: #ebebeb;
+  background-color: white;
   display: flex;
   justify-content: center;
   color: black;
   mix-blend-mode: screen;
   width: 100vw;
-  font-size: 60pt;
-  font-weight: bolder;
+  font-size: 70pt;
   text-align: center;
-  -webkit-text-stroke: 4px red;
+  -webkit-text-stroke: 4px black;
 }
 
 footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-top: 4rem;
-  width: 50%;
 }
 
 .link {

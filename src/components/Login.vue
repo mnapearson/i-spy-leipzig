@@ -2,7 +2,7 @@
   <div>
     <template v-if="!user">
       <div class="container">
-        <h1>Time to start spying...</h1>
+        <h1>Please log in...</h1>
         <div class="login">
           <div class="card">
             <div class="card-body">
@@ -125,8 +125,8 @@ export default {
 .login {
   display: flex;
   flex-direction: column;
-  margin: 2rem;
   justify-content: center;
+  margin-top: 2rem;
 }
 
 .extras {

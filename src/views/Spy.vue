@@ -4,7 +4,9 @@
       <div class="top" v-if="successMessage">
         <h1>Nice work. Head to the spy board to check out your post...</h1>
       </div>
-
+      <div v-if="successMessage == false" class="top">
+        <h1>Write your spy...</h1>
+      </div>
       <div v-if="successMessage == false" class="form">
         <form @submit.prevent>
           <input
@@ -114,7 +116,8 @@ h1 {
 form {
   display: flex;
   flex-direction: column;
-  margin: 2rem 3rem;
+  padding: 0 3rem;
+  margin: 0 4rem;
   color: red;
 }
 
