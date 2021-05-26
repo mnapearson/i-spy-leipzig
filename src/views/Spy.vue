@@ -14,7 +14,7 @@
             v-model="title"
             type="text"
             name="Title"
-            placeholder="Insert title here"
+            placeholder="Who, what, where..."
             required
           />
           <input

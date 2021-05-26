@@ -19,7 +19,7 @@ export default {
 
 <style scoped>
 * {
-  width: 60%;
+  width: 70%;
 }
 
 .filter {

@@ -27,11 +27,10 @@
           </div>
           <div class="row text">
             <div class="post-title">
-              {{ post.title }}
+              "{{ post.title }}"
               <p>{{ post.dateSpied | formatDate }}</p>
             </div>
             <div class="post-text">{{ post.text }}</div>
-            <div class="">{{ post.likes }}</div>
           </div>
         </div>
       </div>
@@ -117,7 +116,7 @@ section {
   justify-content: center;
   color: red;
   text-transform: uppercase;
-  width: 60%;
+  width: 70%;
   margin-bottom: 2rem;
 }
 
@@ -125,7 +124,7 @@ section {
   display: grid;
   grid-template-columns: 2fr 4fr;
   grid-template-rows: auto;
-  column-gap: 4rem;
+  column-gap: 3rem;
   width: 100%;
   margin-top: 2rem;
   align-items: flex-start;
@@ -161,12 +160,12 @@ section {
 
 .post-title p {
   font-weight: normal;
-  padding-left: 1rem;
 }
 
 .post-title {
   display: flex;
-  text-decoration: underline;
+  flex-direction: column;
+  text-align: center;
   margin-bottom: 0.5rem;
   font-weight: bold;
 }
@@ -178,7 +177,7 @@ section {
 .row {
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
+  margin: 2rem 0;
   align-items: center;
   justify-content: center;
 }

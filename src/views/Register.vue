@@ -66,11 +66,11 @@
                     id="gender-f"
                     name="gender"
                     class="custom-control-input"
-                    value="female"
+                    value="♀"
                     v-model="userInfo.gender"
                   />
-                  <label class="custom-control-label" for="gender-f"
-                    >Female</label
+                  <label class="custom-control-label" for="gender-f">
+                    ♀ Female</label
                   >
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
@@ -79,11 +79,11 @@
                     id="gender-m"
                     name="gender"
                     class="custom-control-input"
-                    value="male"
+                    value="♂"
                     v-model="userInfo.gender"
                   />
-                  <label class="custom-control-label" for="gender-m"
-                    >Male</label
+                  <label class="custom-control-label" for="gender-m">
+                    ♂ Male</label
                   >
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
@@ -92,11 +92,11 @@
                     id="gender-na"
                     name="gender"
                     class="custom-control-input"
-                    value="non-binary"
+                    value="×"
                     v-model="userInfo.gender"
                   />
-                  <label class="custom-control-label" for="gender-na"
-                    >Non-binary</label
+                  <label class="custom-control-label" for="gender-na">
+                    × Non-binary</label
                   >
                 </div>
               </div>
