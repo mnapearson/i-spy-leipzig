@@ -1,29 +1,31 @@
 <template>
   <div id="app">
-    <header>
-      <div
-        class="backdrop"
-        :style="{
-          'background-image': 'url(' + require('./assets/ispyback.png') + ')',
-        }"
-      >
-        <p class="title">I SPY LEIPZIG</p>
-      </div>
-    </header>
-    <footer>
-      <button>
-        <router-link class="link" to="/">SPY BOARD</router-link>
-      </button>
-      <button>
-        <router-link class="link" to="spy">SPY SUM1</router-link></button
-      ><button>
-        <router-link class="link" to="/About">INFO</router-link>
-      </button>
+    <div class="top">
+      <header>
+        <div
+          class="backdrop"
+          :style="{
+            'background-image': 'url(' + require('./assets/ispyback.png') + ')',
+          }"
+        >
+          <p class="title">I SPY LEIPZIG</p>
+        </div>
+      </header>
+      <footer>
+        <button>
+          <router-link class="link" to="/">SPY BOARD</router-link>
+        </button>
+        <button>
+          <router-link class="link" to="spy">SPY SUM1</router-link></button
+        ><button>
+          <router-link class="link" to="/About">INFO</router-link>
+        </button>
 
-      <button v-if="user">
-        <router-link class="link" to="/Account">Account</router-link>
-      </button>
-    </footer>
+        <button v-if="user">
+          <router-link class="link" to="/Account">Account</router-link>
+        </button>
+      </footer>
+    </div>
     <router-view />
   </div>
 </template>
@@ -63,7 +65,7 @@ export default {
 
 button {
   text-transform: uppercase;
-  margin: 0.5rem;
+  margin: 1rem;
 }
 
 .title {
@@ -80,6 +82,7 @@ button {
 
 footer {
   display: flex;
+
   justify-content: center;
   margin-top: 4rem;
 }

@@ -28,7 +28,22 @@
           <div class="row text">
             <div class="post-title">
               "{{ post.title }}"
-              <p>{{ post.dateSpied | formatDate }}</p>
+              <div class="post-details">
+                <p>{{ post.dateSpied | formatDate }}</p>
+                <p class="post-place">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="10"
+                    viewBox="0 0 24 24"
+                    fill="red"
+                  >
+                    <path
+                      d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"
+                    /></svg
+                  >{{ post.place }}
+                </p>
+              </div>
             </div>
             <div class="post-text">{{ post.text }}</div>
           </div>
@@ -97,6 +112,19 @@ h1 {
 
 .post-author {
   text-align: center;
+}
+
+.post-details {
+  display: flex;
+}
+
+.post-details p {
+  margin-right: 1rem;
+}
+
+.post-place {
+  font-style: italic;
+  text-transform: lowercase;
 }
 
 .post-spy {

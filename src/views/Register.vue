@@ -56,50 +56,7 @@
                   />
                 </div>
               </div>
-              <div id="gender" class="form-group">
-                <label>If you want to identify as:</label>
-                <br />
 
-                <div class="custom-control custom-radio custom-control-inline">
-                  <input
-                    type="radio"
-                    id="gender-f"
-                    name="gender"
-                    class="custom-control-input"
-                    value="♀"
-                    v-model="userInfo.gender"
-                  />
-                  <label class="custom-control-label" for="gender-f">
-                    ♀ Female</label
-                  >
-                </div>
-                <div class="custom-control custom-radio custom-control-inline">
-                  <input
-                    type="radio"
-                    id="gender-m"
-                    name="gender"
-                    class="custom-control-input"
-                    value="♂"
-                    v-model="userInfo.gender"
-                  />
-                  <label class="custom-control-label" for="gender-m">
-                    ♂ Male</label
-                  >
-                </div>
-                <div class="custom-control custom-radio custom-control-inline">
-                  <input
-                    type="radio"
-                    id="gender-na"
-                    name="gender"
-                    class="custom-control-input"
-                    value="×"
-                    v-model="userInfo.gender"
-                  />
-                  <label class="custom-control-label" for="gender-na">
-                    × Non-binary</label
-                  >
-                </div>
-              </div>
               <div class="email-info">
                 <div class="form-group">
                   <label

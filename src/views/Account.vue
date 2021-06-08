@@ -81,7 +81,6 @@ button {
 .account-info {
   display: flex;
   flex-direction: column;
-  width: 100%;
   align-items: flex-start;
 }
 

@@ -17,6 +17,120 @@
             placeholder="Who, what, where..."
             required
           />
+          <div class="place">
+            <div class="radio">
+              <input
+                type="radio"
+                id="where-north"
+                name="place"
+                class="custom-control-input"
+                value="place"
+                v-model="place"
+              />
+              <label class="custom-control-label" for="where-north">
+                Nord</label
+              >
+            </div>
+            <div class="radio">
+              <input
+                type="radio"
+                id="where-northeast"
+                name="place"
+                class="custom-control-input"
+                value="place"
+                v-model="place"
+              />
+              <label class="custom-control-label" for="where-northeast">
+                Nordost</label
+              >
+            </div>
+            <div class="radio">
+              <input
+                type="radio"
+                id="where-east"
+                name="place"
+                class="custom-control-input"
+                value="place"
+                v-model="place"
+              />
+              <label class="custom-control-label" for="where-east"> Ost</label>
+            </div>
+            <div class="radio">
+              <input
+                type="radio"
+                id="where-southeast"
+                name="place"
+                class="custom-control-input"
+                value="place"
+                v-model="place"
+              />
+              <label class="custom-control-label" for="where-southeast">
+                Südost</label
+              >
+            </div>
+
+            <div class="radio">
+              <input
+                type="radio"
+                id="where-south"
+                name="place"
+                class="custom-control-input"
+                value="south"
+                v-model="place"
+              />
+              <label class="custom-control-label" for="gender-m"> Süd</label>
+            </div>
+            <div class="radio">
+              <input
+                type="radio"
+                id="where-southwest"
+                name="place"
+                class="custom-control-input"
+                value="place"
+                v-model="place"
+              />
+              <label class="custom-control-label" for="where-southwest">
+                Südwest</label
+              >
+            </div>
+            <div class="radio">
+              <input
+                type="radio"
+                id="where-west"
+                name="place"
+                class="custom-control-input"
+                value="place"
+                v-model="place"
+              />
+              <label class="custom-control-label" for="where-west"> West</label>
+            </div>
+            <div class="radio">
+              <input
+                type="radio"
+                id="where-altwest"
+                name="place"
+                class="custom-control-input"
+                value="place"
+                v-model="place"
+              />
+              <label class="custom-control-label" for="where-altwest">
+                Altwest</label
+              >
+            </div>
+            <div class="radio">
+              <input
+                type="radio"
+                id="where-northwest"
+                name="place"
+                class="custom-control-input"
+                value="place"
+                v-model="place"
+              />
+              <label class="custom-control-label" for="where-northwest">
+                Nordwest</label
+              >
+            </div>
+          </div>
           <input
             class="mb-4"
             v-model="dateSpied"
@@ -56,6 +170,7 @@ export default {
       myProfile: undefined,
       successMessage: false,
       title: "",
+      place: null,
       dateSpied: "",
       text: "",
     };
@@ -89,6 +204,7 @@ export default {
         title: this.title,
         text: this.text,
         date: new Date(),
+        place: this.place,
         dateSpied: this.dateSpied,
         author: this.myProfile.userName,
         age: this.myProfile.age,
@@ -99,6 +215,7 @@ export default {
       } catch (error) {
         console.log(error);
       }
+      this.place = null;
       this.text = "";
       this.title = "";
       this.dateSpied = "";
@@ -119,6 +236,23 @@ form {
   padding: 0 3rem;
   margin: 0 4rem;
   color: red;
+}
+
+.place {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: small;
+  padding: 0 0.2rem;
 }
 
 input {
