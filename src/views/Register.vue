@@ -44,16 +44,61 @@
               </div>
 
               <div class="form-group row">
-                <label for="age" class="col-md-4 col-form-label text-md-right"
-                  >Age</label
+                <label
+                  for="birthdate"
+                  class="col-md-4 col-form-label text-md-right"
+                  >Birthdate</label
                 >
 
                 <div class="col-md-6">
+                  <vuejs-datepicker
+                    v-model="userInfo.birthdate"
+                  ></vuejs-datepicker>
+                </div>
+              </div>
+
+              <div id="gender" class="form-group">
+                <label>If you want to identify as:</label>
+                <br />
+                <div class="custom-control custom-radio custom-control-inline">
                   <input
-                    v-model="userInfo.age"
-                    class="mb-4 border-black w-full"
-                    required
+                    type="radio"
+                    id="gender-f"
+                    name="gender"
+                    class="custom-control-input"
+                    value="♀"
+                    v-model="userInfo.gender"
                   />
+                  <label class="custom-control-label" for="gender-f">
+                    ♀ Female</label
+                  >
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input
+                    type="radio"
+                    id="gender-m"
+                    name="gender"
+                    class="custom-control-input"
+                    value="♂"
+                    v-model="userInfo.gender"
+                  />
+                  <label class="custom-control-label" for="gender-m">
+                    ♂ Male</label
+                  >
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input
+                    type="radio"
+                    id="gender-na"
+                    name="gender"
+                    class="custom-control-input"
+                    value="×"
+                    v-model="userInfo.gender"
+                  />
+
+                  <label class="custom-control-label" for="gender-na">
+                    × Non-binary</label
+                  >
                 </div>
               </div>
 
@@ -125,6 +170,7 @@
 </template>
 
 <script>
+import vuejsDatepicker from "vuejs-datepicker";
 import { auth, db } from "@/firebase";
 import { mapState } from "vuex";
 import { required, minLength } from "vuelidate/lib/validators";
@@ -150,9 +196,24 @@ export default {
   props: {
     value: Date,
   },
+  components: {
+    vuejsDatepicker,
+  },
 
   computed: {
     ...mapState(["user", "profile"]),
+    age() {
+      const today = new Date();
+      let age = today.getFullYear() - this.userInfo.birthdate.getFullYear();
+      const m = today.getMonth() - this.userInfo.birthdate.getMonth();
+      if (
+        m < 0 ||
+        (m === 0 && today.getDate() < this.userInfo.birthdate.getDate())
+      ) {
+        age = age - 1;
+      }
+      return age;
+    },
   },
   methods: {
     async submit() {
@@ -185,7 +246,7 @@ export default {
         userName: null,
         name: null,
         gender: null,
-        age: null,
+        birthdate: null,
       };
     },
   },
