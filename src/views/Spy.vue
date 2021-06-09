@@ -24,7 +24,7 @@
                 id="where-north"
                 name="place"
                 class="custom-control-input"
-                value="place"
+                value="Nord"
                 v-model="place"
               />
               <label class="custom-control-label" for="where-north">
@@ -37,7 +37,7 @@
                 id="where-northeast"
                 name="place"
                 class="custom-control-input"
-                value="place"
+                value="Nordost"
                 v-model="place"
               />
               <label class="custom-control-label" for="where-northeast">
@@ -50,7 +50,7 @@
                 id="where-east"
                 name="place"
                 class="custom-control-input"
-                value="place"
+                value="Ost"
                 v-model="place"
               />
               <label class="custom-control-label" for="where-east"> Ost</label>
@@ -61,7 +61,7 @@
                 id="where-southeast"
                 name="place"
                 class="custom-control-input"
-                value="place"
+                value="Südost"
                 v-model="place"
               />
               <label class="custom-control-label" for="where-southeast">
@@ -75,7 +75,7 @@
                 id="where-south"
                 name="place"
                 class="custom-control-input"
-                value="south"
+                value="Süd"
                 v-model="place"
               />
               <label class="custom-control-label" for="gender-m"> Süd</label>
@@ -86,7 +86,7 @@
                 id="where-southwest"
                 name="place"
                 class="custom-control-input"
-                value="place"
+                value="südwest"
                 v-model="place"
               />
               <label class="custom-control-label" for="where-southwest">
@@ -99,7 +99,7 @@
                 id="where-west"
                 name="place"
                 class="custom-control-input"
-                value="place"
+                value="West"
                 v-model="place"
               />
               <label class="custom-control-label" for="where-west"> West</label>
@@ -110,7 +110,7 @@
                 id="where-altwest"
                 name="place"
                 class="custom-control-input"
-                value="place"
+                value="altwest"
                 v-model="place"
               />
               <label class="custom-control-label" for="where-altwest">
@@ -123,7 +123,7 @@
                 id="where-northwest"
                 name="place"
                 class="custom-control-input"
-                value="place"
+                value="nordwest"
                 v-model="place"
               />
               <label class="custom-control-label" for="where-northwest">
@@ -207,7 +207,7 @@ export default {
         place: this.place,
         dateSpied: this.dateSpied,
         author: this.myProfile.userName,
-        age: this.myProfile.age,
+        age: this.myProfile.birthdate,
         gender: this.myProfile.gender,
       };
       try {

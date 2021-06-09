@@ -202,17 +202,9 @@ export default {
 
   computed: {
     ...mapState(["user", "profile"]),
-    age() {
-      const today = new Date();
-      let age = today.getFullYear() - this.userInfo.birthdate.getFullYear();
-      const m = today.getMonth() - this.userInfo.birthdate.getMonth();
-      if (
-        m < 0 ||
-        (m === 0 && today.getDate() < this.userInfo.birthdate.getDate())
-      ) {
-        age = age - 1;
-      }
-      return age;
+    calcAge(birthdate) {
+      var birthday = +new Date(birthdate);
+      return ~~((Date.now() - birthday) / 31557600000);
     },
   },
   methods: {

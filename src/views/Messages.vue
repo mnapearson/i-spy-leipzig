@@ -48,6 +48,8 @@ export default {
         text: this.message,
         date: new Date(),
         author: this.myProfile.userName,
+        gender: this.myProfile.gender,
+        age: this.myProfile.birthdate,
       };
       db.collection("message").add(message);
       this.message = "";
