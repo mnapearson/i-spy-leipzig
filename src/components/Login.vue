@@ -45,21 +45,20 @@
                       v-model="password"
                     />
                   </div>
-                </div>
-
-                <div class="form-group row mb-0">
-                  <div class="col-md-8 offset-md-4">
+                  <div class="login-option">
                     <button type="submit">
                       Login
                     </button>
+                    <div class="extras">
+                      <a @click="togglePasswordReset()">Forgot Password?</a>
+                    </div>
                   </div>
                 </div>
+
                 <h4 v-if="error">
                   {{ error }}
                 </h4>
-                <div class="extras">
-                  <a @click="togglePasswordReset()">Forgot Password?</a>
-                </div>
+
                 <PasswordReset
                   v-if="showPasswordReset"
                   @close="togglePasswordReset()"
@@ -69,9 +68,8 @@
           </div>
         </div>
         <h1>Need to create an account?</h1>
-        <button>
-          <router-link class="link" to="/Register">REGISTER</router-link>
-        </button>
+
+        <router-link class="link" to="/Register">REGISTER</router-link>
       </div>
     </template>
   </div>
@@ -115,11 +113,19 @@ export default {
 </script>
 
 <style scoped>
+button {
+  margin: 0;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-top: 2rem;
+}
+
+input {
+  margin: 0.5rem 0;
 }
 
 .login {
@@ -129,8 +135,26 @@ export default {
   margin-top: 2rem;
 }
 
+.link {
+  margin-top: 1rem;
+  font-size: 18px;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: red;
+}
+
+.login-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+}
+
 .extras {
-  margin: 2rem;
+  font-size: 14px;
+  margin: 1rem;
 }
 
 h4 {
