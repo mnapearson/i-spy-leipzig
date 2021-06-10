@@ -19,9 +19,11 @@
           <p>{{ this.$store.getters.myProfile.userName }}</p>
         </div>
         <div class="input age">
-          <p>age:</p>
+          <p>birthdate:</p>
           <p>
-            {{ this.$store.getters.myProfile.birthdate.toDate() | getAge }}
+            {{
+              this.$store.getters.myProfile.birthdate.toDate() | formatBirthdate
+            }}
           </p>
         </div>
         <div class="input gender">
