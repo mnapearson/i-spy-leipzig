@@ -14,6 +14,17 @@ Vue.filter("formatDate", function(value) {
   }
 });
 
+Vue.filter("formatBirthdate", function(value) {
+  if (value) {
+    return moment(String(value)).format("DD.MM.YY");
+  }
+});
+
+Vue.filter("getAge", function(value) {
+  var birthday = +new Date(value);
+  return ~~((Date.now() - birthday) / 31557600000);
+});
+
 export default new Vuex.Store({
   state: {
     user: null,

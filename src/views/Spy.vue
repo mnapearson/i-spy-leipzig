@@ -207,7 +207,7 @@ export default {
         place: this.place,
         dateSpied: this.dateSpied,
         author: this.myProfile.userName,
-        age: this.myProfile.birthdate,
+        age: this.myProfile.birthdate.toDate(),
         gender: this.myProfile.gender,
       };
       try {

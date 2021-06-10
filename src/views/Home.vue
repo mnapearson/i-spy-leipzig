@@ -17,7 +17,8 @@
             </div>
             <div class="post-author">
               <p>
-                @{{ post.author }} <br />({{ post.age }}, {{ post.gender }})
+                @{{ post.author }} <br />({{ post.age.toDate() | getAge }},
+                {{ post.gender }})
               </p>
             </div>
 

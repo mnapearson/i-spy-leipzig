@@ -20,7 +20,9 @@
         </div>
         <div class="input age">
           <p>age:</p>
-          <p>{{ this.$store.getters.myProfile.age }}</p>
+          <p>
+            {{ this.$store.getters.myProfile.birthdate.toDate() | getAge }}
+          </p>
         </div>
         <div class="input gender">
           <p>gender:</p>
