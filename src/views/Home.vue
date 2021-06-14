@@ -60,7 +60,7 @@
       <div class="footer-mid">
         <!-- Begin Mailchimp Signup Form -->
         <div id="mc_embed_signup">
-          <p>get fresh spies and hot tips in your inbox</p>
+          <p>get fresh spies in your inbox weekly</p>
           <form
             action="https://Ispyleipzig.us6.list-manage.com/subscribe/post?u=5f78af9fc7357fc23c978ed4e&amp;id=955aeb0b5c"
             method="post"
@@ -71,16 +71,6 @@
             novalidate
           >
             <div id="mc_embed_signup_scroll">
-              <div class="mc-field-group">
-                <input
-                  placeholder="your email address"
-                  type="email"
-                  value=""
-                  name="EMAIL"
-                  class="required email"
-                  id="mce-EMAIL"
-                />
-              </div>
               <div id="mce-responses" class="clear">
                 <div
                   class="response"

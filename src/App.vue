@@ -76,6 +76,10 @@ export default {
   font-family: "Roboto Mono", monospace;
 }
 
+header {
+  cursor: pointer;
+}
+
 button {
   text-transform: uppercase;
   margin: 1rem;
