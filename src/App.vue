@@ -34,6 +34,18 @@
 import firebase from "firebase";
 import { mapState } from "vuex";
 
+!(function(c, h, i, m, p) {
+  (m = c.createElement(h)),
+    (p = c.getElementsByTagName(h)[0]),
+    (m.async = 1),
+    (m.src = i),
+    p.parentNode.insertBefore(m, p);
+})(
+  document,
+  "script",
+  "https://chimpstatic.com/mcjs-connected/js/users/5f78af9fc7357fc23c978ed4e/6adeb96aeca859793e27e77b6.js"
+);
+
 export default {
   computed: {
     ...mapState(["user", "posts"]),

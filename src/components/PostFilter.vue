@@ -6,6 +6,7 @@
         <div class="option date">Date Spied</div>
         <div class="option place">Place</div>
         <div class="option gender">Gender</div>
+        <div class="search"></div>
       </div>
     </div>
   </div>
