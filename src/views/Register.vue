@@ -155,6 +155,15 @@
                   <button type="submit" class="btn btn-primary">
                     Register
                   </button>
+                  <p class="legal">
+                    when you register you agree to our
+                    <router-link
+                      to="/terms"
+                      class="link"
+                      style="text-decoration: underline"
+                      >terms and conditions</router-link
+                    >
+                  </p>
                 </div>
               </div>
             </form>
@@ -280,5 +289,9 @@ h4 {
 
 #gender {
   margin-top: 1rem;
+}
+
+.legal {
+  font-size: 10px;
 }
 </style>

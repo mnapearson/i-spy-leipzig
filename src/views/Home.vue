@@ -54,10 +54,15 @@
 
     <footer>
       <div class="footer-left">
-        <p>instagram</p>
+        <p>
+          <a class="link" href="https://www.instagram.com/ispyleipzig/"
+            >instagram</a
+          >
+        </p>
         <p>twitter</p>
       </div>
-      <div class="footer-mid">
+
+      <div v-if="!user" class="footer-mid">
         <!-- Begin Mailchimp Signup Form -->
         <div id="mc_embed_signup">
           <p>get fresh spies in your inbox weekly</p>
@@ -111,8 +116,12 @@
         <!--End mc_embed_signup-->
       </div>
       <div class="footer-right">
-        <p>privacy policy</p>
-        <p>impressum</p>
+        <p>
+          <router-link to="/privacy" class="link">privacy policy</router-link>
+        </p>
+        <p>
+          <router-link to="/impressum" class="link">impressum</router-link>
+        </p>
       </div>
     </footer>
   </div>

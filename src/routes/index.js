@@ -8,6 +8,9 @@ import Spy from "../views/Spy";
 import Verify from "../views/Verify";
 import Account from "../views/Account";
 import Messages from "../views/Messages";
+import Terms from "../views/Terms";
+import Privacy from "../views/Privacy";
+import Impressum from "../views/Impressum";
 import { auth } from "../firebase";
 
 Vue.use(Router);
@@ -62,6 +65,21 @@ const router = new Router({
       path: "/account",
       name: "account",
       component: Account,
+    },
+    {
+      path: "/terms",
+      name: "terms",
+      component: Terms,
+    },
+    {
+      path: "/privacy",
+      name: "privacy",
+      component: Privacy,
+    },
+    {
+      path: "/impressum",
+      name: "impressum",
+      component: Impressum,
     },
   ],
 });
