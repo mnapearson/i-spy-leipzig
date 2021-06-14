@@ -52,7 +52,79 @@
       </div>
     </section>
 
-    <footer></footer>
+    <footer>
+      <div class="footer-left">
+        <p>instagram</p>
+        <p>twitter</p>
+      </div>
+      <div class="footer-mid">
+        <!-- Begin Mailchimp Signup Form -->
+        <div id="mc_embed_signup">
+          <p>get fresh spies and hot tips in your inbox</p>
+          <form
+            action="https://Ispyleipzig.us6.list-manage.com/subscribe/post?u=5f78af9fc7357fc23c978ed4e&amp;id=955aeb0b5c"
+            method="post"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            class="validate"
+            target="_blank"
+            novalidate
+          >
+            <div id="mc_embed_signup_scroll">
+              <div class="mc-field-group">
+                <input
+                  placeholder="your email address"
+                  type="email"
+                  value=""
+                  name="EMAIL"
+                  class="required email"
+                  id="mce-EMAIL"
+                />
+              </div>
+              <div id="mce-responses" class="clear">
+                <div
+                  class="response"
+                  id="mce-error-response"
+                  style="display:none"
+                ></div>
+                <div
+                  class="response"
+                  id="mce-success-response"
+                  style="display:none"
+                ></div>
+              </div>
+              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div
+                style="position: absolute; left: -5000px;"
+                aria-hidden="true"
+              >
+                <input
+                  type="text"
+                  name="b_5f78af9fc7357fc23c978ed4e_955aeb0b5c"
+                  tabindex="-1"
+                  value=""
+                />
+              </div>
+              <div class="clear">
+                <input
+                  type="submit"
+                  value="SUBSCRIBE"
+                  name="subscribe"
+                  id="mc-embedded-subscribe"
+                  class="button"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!--End mc_embed_signup-->
+      </div>
+      <div class="footer-right">
+        <p>privacy policy</p>
+        <p>impressum</p>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -213,5 +285,47 @@ section {
 
 .row p {
   margin-bottom: 0.5rem;
+}
+
+.validate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#mc_embed_signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+#mc_embed_signup_scroll {
+  display: flex;
+  margin-top: 0.5rem;
+}
+.button {
+  margin-left: 0.5rem;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 2rem 0 0;
+  text-align: center;
+}
+
+.footer-left,
+.footer-right {
+  margin-bottom: 1rem;
+  display: flex;
+}
+
+.footer-left p,
+.footer-right p {
+  margin: 0 1rem;
 }
 </style>

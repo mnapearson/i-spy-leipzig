@@ -256,6 +256,7 @@ export default {
 
 h1 {
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 input {
@@ -263,7 +264,7 @@ input {
 }
 
 button {
-  margin-top: 1rem;
+  margin: 1rem 0;
 }
 
 h4 {
@@ -274,6 +275,10 @@ h4 {
 }
 
 .email-info {
-  margin-top: 3rem;
+  margin-top: 1rem;
+}
+
+#gender {
+  margin-top: 1rem;
 }
 </style>
