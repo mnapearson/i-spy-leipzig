@@ -7,15 +7,13 @@
 
     This document sets out the terms and conditions for use of ispyleipzig.de
     web site and comprises a legal agreement between you and the company ('we,
-    'us', ?our?). You must read all these terms before using the site or
-    downloading or uploading any image. You will be required to click to
-    indicate acceptance of these terms and our License Agreement terms before
-    you can post any content on our site. You should also read our Privacy
-    Policy which describes how we use your personal data/information. These
-    documents, as amended by us and posted on the site from time to time, are
-    the entire agreement between us. If you do not agree with them then stop all
-    use of the site and do not continue to post or read any content on
-    iSawYou.com.<br />
+    'us', 'our'). You must read all these terms before using the site. By
+    clicking 'register' you indicate acceptance of these terms and our License
+    Agreement terms. You should also read our Privacy Policy which describes how
+    we use your personal data/information. These documents, as amended by us and
+    posted on the site from time to time, are the entire agreement between us.
+    If you do not agree with them then stop all use of the site and do not
+    continue to post or read any content on ispyleipzig.de.<br />
 
     <h2>Copyright and Trademarks</h2>
     <br />

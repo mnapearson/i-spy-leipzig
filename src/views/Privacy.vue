@@ -11,9 +11,7 @@
     access certain areas of our site, or when you sign-up for our mailing list.
     Access to our web site is generally unrestricted, and you may browse it
     anonymously. Information we collect from you will never be sold, rented, or
-    shared with third-parties. However, we may need to share your information
-    with our affiliated companies in order to provide services you have
-    purchased or requested. We will make you aware of such instances.
+    shared with third-parties.
 
     <h2>Cookies</h2>
     Our website uses “cookies”. A “cookie” is a small text file that permits us
