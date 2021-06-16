@@ -4,10 +4,11 @@
       <Login></Login>
     </div>
     <div class="message-form" v-if="user">
+      <h2>Write your reply to <i>@user...</i></h2>
       <div class="message-to">
-        <input type="text" placeholder="to" v-model="email" />
+        <input type="text" placeholder="Email" v-model="email" />
       </div>
-      <div class="message-title">
+      <div class="message-subject">
         <input type="text" placeholder="Subject" v-model="subject" />
       </div>
       <div class="message-text">
@@ -32,6 +33,7 @@
 import { db } from "@/firebase";
 import Login from "../components/Login";
 import { mapState } from "vuex";
+
 export default {
   name: "messages",
   data() {
@@ -48,8 +50,14 @@ export default {
   methods: {
     sendMessage() {
       db.collection("messages").add({
-        to: this.email,
-        message: { subject: this.subject, text: this.text },
+        to: "marratoon@gmail.com",
+        message: {
+          subject:
+            "You have a reply from @" +
+            this.$store.getters.myProfile.userName +
+            "!",
+          text: this.text,
+        },
       });
       this.email = "";
       this.text = "";
@@ -79,15 +87,30 @@ export default {
 }
 
 h1 {
+  margin: 2rem;
   color: red;
+}
+
+h2 {
+  margin-bottom: 2rem;
+}
+
+.message-to,
+.message-subject {
+  display: none;
 }
 
 .message-form {
   margin-top: 3rem;
 }
 
-.message-title input {
+input {
   margin-bottom: 1rem;
   width: 250px;
+  color: red;
+}
+
+textarea {
+  color: red;
 }
 </style>
