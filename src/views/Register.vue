@@ -123,6 +123,29 @@
                     />
                   </div>
                 </div>
+              </div>
+
+              <div class="email-info">
+                <div class="form-group">
+                  <label
+                    for="email"
+                    class="col-md-4 col-form-label text-md-right"
+                    >Confirm Email</label
+                  >
+
+                  <div class="col-md-6">
+                    <input
+                      id="email"
+                      type="email"
+                      class="form-control"
+                      name="email"
+                      value
+                      required
+                      autofocus
+                      v-model="userInfo.email"
+                    />
+                  </div>
+                </div>
 
                 <div class="form-group">
                   <label
@@ -190,7 +213,6 @@ export default {
   data() {
     return {
       error: null,
-
       email: "",
       password: "",
       userInfo: this.createEmptyUserInfo(),
@@ -248,6 +270,7 @@ export default {
         name: null,
         gender: null,
         birthdate: null,
+        email: null,
       };
     },
   },

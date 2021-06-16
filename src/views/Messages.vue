@@ -4,8 +4,11 @@
       <Login></Login>
     </div>
     <div class="message-form" v-if="user">
+      <div class="message-to">
+        <input type="text" placeholder="to" v-model="email" />
+      </div>
       <div class="message-title">
-        <input type="text" placeholder="Title" v-model="title" />
+        <input type="text" placeholder="Subject" v-model="subject" />
       </div>
       <div class="message-text">
         <textarea
@@ -14,7 +17,7 @@
           cols="30"
           rows="10"
           placeholder="Message"
-          v-model="message"
+          v-model="text"
         ></textarea>
       </div>
       <button @click="sendMessage">send</button>
@@ -33,8 +36,9 @@ export default {
   name: "messages",
   data() {
     return {
-      title: "",
-      message: "",
+      email: "",
+      subject: "",
+      text: "",
       successMessage: false,
     };
   },
@@ -43,17 +47,13 @@ export default {
   },
   methods: {
     sendMessage() {
-      const message = {
-        title: this.title,
-        text: this.message,
-        date: new Date(),
-        author: this.myProfile.userName,
-        gender: this.myProfile.gender,
-        age: this.myProfile.birthdate,
-      };
-      db.collection("message").add(message);
-      this.message = "";
-      this.title = "";
+      db.collection("messages").add({
+        to: this.email,
+        message: { subject: this.subject, text: this.text },
+      });
+      this.email = "";
+      this.text = "";
+      this.subject = "";
       this.successMessage = true;
     },
   },
