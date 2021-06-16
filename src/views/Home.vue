@@ -59,7 +59,9 @@
             >instagram</a
           >
         </p>
-        <p>twitter</p>
+        <p>
+          <a class="link" href="https://twitter.com/ISPYLEIPZIG">twitter</a>
+        </p>
       </div>
 
       <div class="footer-right">

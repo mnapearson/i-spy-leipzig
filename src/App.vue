@@ -178,7 +178,4 @@ nav {
   display: flex;
   margin-top: 0.5rem;
 }
-.button {
-  margin-left: 0.5rem;
-}
 </style>
