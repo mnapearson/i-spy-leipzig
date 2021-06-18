@@ -206,6 +206,7 @@ nav {
   height: 100%;
   line-height: 82px;
   text-align: center;
+  text-shadow: 5px 6px;
   /* Starting position */
   -moz-transform: translateX(100%);
   -webkit-transform: translateX(100%);
