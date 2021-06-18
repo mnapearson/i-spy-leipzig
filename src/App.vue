@@ -156,6 +156,7 @@ button {
   font-weight: bold;
   text-align: center;
   -webkit-text-stroke: 4px black;
+  flex-wrap: nowrap;
 }
 
 nav {
@@ -181,8 +182,10 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  align-content: center;
   margin-top: 1rem;
   margin-bottom: 3rem;
+  margin-left: 1rem;
 }
 
 #mc_embed_signup_scroll {
@@ -193,13 +196,15 @@ nav {
   height: 90px;
   overflow: hidden;
   position: relative;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 .scroll-left p {
   position: absolute;
+  flex-wrap: nowrap;
   width: 100%;
   height: 100%;
-  margin-top: 10px;
-  line-height: 60px;
+  line-height: 82px;
   text-align: center;
   /* Starting position */
   -moz-transform: translateX(100%);
