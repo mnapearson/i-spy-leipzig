@@ -16,7 +16,9 @@
 
       <nav>
         <button>
-          <router-link class="link" to="/">SPY BOARD</router-link>
+          <router-link class="link" to="/"
+            >SPY BOARD <i class="fas fa-clipboard-list fa-2x"></i
+          ></router-link>
         </button>
         <button>
           <router-link class="link" to="spy">SPY SUM1</router-link></button
