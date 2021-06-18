@@ -1,10 +1,5 @@
 <template>
   <div id="app">
-    <script
-      type="text/javascript"
-      async
-      src="//l.getsitecontrol.com/y79vzlm4.js"
-    ></script>
     <div class="top">
       <header>
         <div
