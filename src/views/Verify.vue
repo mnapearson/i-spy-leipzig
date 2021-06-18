@@ -20,9 +20,11 @@ export default {
   text-align: center;
   max-width: 50%;
   flex-direction: column;
+  cursor: zoom-in;
 }
 
 p {
   margin-top: 2rem;
+  cursor: zoom-in;
 }
 </style>
