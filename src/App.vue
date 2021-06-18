@@ -14,22 +14,29 @@
         </div>
       </header>
 
-      <nav>
-        <button>
-          <router-link class="link" to="/"
-            >SPY BOARD <i class="fas fa-clipboard-list fa-2x"></i
-          ></router-link>
-        </button>
-        <button>
-          <router-link class="link" to="spy">SPY SUM1</router-link></button
-        ><button>
-          <router-link class="link" to="/About">INFO</router-link>
-        </button>
+      <div class="navigation">
+        <nav>
+          <button class="">
+            <span class="center">
+              <router-link class="link" to="/"
+                >SPY BOARD <i class="fas fa-clipboard-list"></i></router-link
+            ></span>
+          </button>
+          <button>
+            <router-link class="link" to="spy"
+              >SPY SUM1 <i class="fas fa-binoculars"></i
+            ></router-link></button
+          ><button>
+            <router-link class="link" to="/About"
+              >INFO <i class="fas fa-question-circle"></i
+            ></router-link>
+          </button>
 
-        <button v-if="user">
-          <router-link class="link" to="/Account">Account</router-link>
-        </button>
-      </nav>
+          <button v-if="user">
+            <router-link class="link" to="/Account">Account</router-link>
+          </button>
+        </nav>
+      </div>
     </div>
     <router-view />
   </div>
@@ -112,6 +119,7 @@ button {
 nav {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 2rem;
 }
 
