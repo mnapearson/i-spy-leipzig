@@ -41,6 +41,9 @@ export default {};
 </script>
 
 <style scoped>
+a {
+  cursor: pointer;
+}
 h1,
 h2 {
   display: flex;
