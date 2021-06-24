@@ -1,11 +1,17 @@
 <template>
   <div>
     <div class="filter">
-      <div class="post-title">Filter By</div>
+      <div class="post-title">Filter By <i class="fas fa-filter"></i></div>
       <div class="filter-buttons">
-        <div class="option date">Date Spied</div>
-        <div class="option place">Place</div>
-        <div class="option gender">Gender</div>
+        <div class="option date">
+          Date Spied <i class="fas fa-calendar-day"></i>
+        </div>
+        <div class="option place">
+          Place <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <div class="option gender">
+          Gender <i class="fas fa-venus-mars"></i>
+        </div>
         <div class="search"></div>
       </div>
     </div>
