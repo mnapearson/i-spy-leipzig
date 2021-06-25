@@ -33,7 +33,9 @@
           </button>
 
           <button v-if="user">
-            <router-link class="link" to="/Account">Account</router-link>
+            <router-link class="link" to="/Account"
+              >Account <i class="fas fa-user"></i
+            ></router-link>
           </button>
         </nav>
       </div>

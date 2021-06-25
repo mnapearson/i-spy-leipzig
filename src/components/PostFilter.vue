@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="filter">
-      <div class="post-title">Filter By <i class="fas fa-filter"></i></div>
+      <div class="post-title">FILTER BY <i class="fas fa-filter"></i></div>
       <div class="filter-buttons">
         <div class="option date">
           Date Spied <i class="fas fa-calendar-day"></i>
