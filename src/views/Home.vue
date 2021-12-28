@@ -1,9 +1,9 @@
 <template>
   <div class="home">
     <section>
-      <div class="top" v-if="user">
+      <!-- <div class="top" v-if="user">
         Hi, {{ this.$store.getters.myProfile.userName }}, have you been spied?
-      </div>
+      </div> -->
       <PostFilter></PostFilter>
       <div class="main-container">
         <div class="posts-title">

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="top">
-      <header>
+      <!-- <header>
         <div
           class="backdrop"
           :style="{
@@ -12,30 +12,27 @@
             <p class="title">I SPY LEIPZIG</p>
           </div>
         </div>
-      </header>
+      </header> -->
 
       <div class="navigation">
         <nav>
-          <button class="">
-            <span class="center">
-              <router-link class="link" to="/"
-                >SPY BOARD <i class="fas fa-clipboard-list"></i></router-link
-            ></span>
-          </button>
-          <button>
-            <router-link class="link" to="spy"
-              >SPY SUM1 <i class="fas fa-binoculars"></i
-            ></router-link></button
-          ><button>
-            <router-link class="link" to="/About"
-              >INFO <i class="fas fa-question-circle"></i
-            ></router-link>
-          </button>
+          <router-link class="link" to="/"
+            ><img src="@/assets/eye.png"
+          /></router-link>
 
-          <button v-if="user">
-            <router-link class="link" to="/Account"
-              >Account <i class="fas fa-user"></i
-            ></router-link>
+          <router-link class="link" to="spy"
+            ><img src="@/assets/Focus.png"
+          /></router-link>
+          <!-- <router-link class="link" to="/About"
+              ><i class="fas fa-question-circle"></i
+            ></router-link> -->
+
+          <router-link class="link" to="/Account">
+            <img src="@/assets/account.png"
+          /></router-link>
+
+          <button v-if="user" @click.prevent="signOut">
+            <img src="@/assets/signout.png" />
           </button>
         </nav>
       </div>
@@ -48,17 +45,17 @@
 import firebase from "firebase";
 import { mapState } from "vuex";
 
-!(function(c, h, i, m, p) {
-  (m = c.createElement(h)),
-    (p = c.getElementsByTagName(h)[0]),
-    (m.async = 1),
-    (m.src = i),
-    p.parentNode.insertBefore(m, p);
-})(
-  document,
-  "script",
-  "https://chimpstatic.com/mcjs-connected/js/users/5f78af9fc7357fc23c978ed4e/6adeb96aeca859793e27e77b6.js"
-);
+// !(function(c, h, i, m, p) {
+//   (m = c.createElement(h)),
+//     (p = c.getElementsByTagName(h)[0]),
+//     (m.async = 1),
+//     (m.src = i),
+//     p.parentNode.insertBefore(m, p);
+// })(
+//   document,
+//   "script",
+//   "https://chimpstatic.com/mcjs-connected/js/users/5f78af9fc7357fc23c978ed4e/6adeb96aeca859793e27e77b6.js"
+// );
 
 export default {
   computed: {
@@ -85,10 +82,10 @@ export default {
 
 <style>
 * {
-  margin: 0 auto;
   font-family: "Roboto Mono", monospace;
-  cursor: zoom-in;
+  margin: 0 auto;
 }
+
 .a {
   cursor: pointer;
   text-transform: italic;
@@ -118,11 +115,26 @@ button {
   flex-wrap: nowrap;
 }
 
+.navigation {
+  position: fixed;
+  bottom: 0;
+  margin-top: 2rem;
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid red;
+}
+
 nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.navigation button {
+  background-color: white;
+  border: none;
+  margin-left: -1rem;
 }
 
 .link {
