@@ -31,7 +31,6 @@
           <p>{{ this.$store.getters.myProfile.gender }}</p>
         </div>
       </div>
-      <button @click.prevent="signOut">BYE</button>
     </div>
   </div>
 </template>
@@ -68,6 +67,10 @@ export default {
 </script>
 
 <style scoped>
+.navigation {
+  background-color: black;
+}
+
 .account {
   margin: 2rem;
   display: flex;

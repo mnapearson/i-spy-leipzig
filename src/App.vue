@@ -13,26 +13,25 @@
           </div>
         </div>
       </header> -->
-
-      <div class="navigation">
+      <div class="navigation" v-if="user">
         <nav>
-          <router-link class="link" to="/"
-            ><img src="@/assets/eye.png"
+          <router-link class="link" to="/home"
+            ><img src="@/assets/pepicons_eyesmall.png"
           /></router-link>
 
           <router-link class="link" to="spy"
-            ><img src="@/assets/Focus.png"
+            ><img src="@/assets/postbutton.png"
           /></router-link>
           <!-- <router-link class="link" to="/About"
               ><i class="fas fa-question-circle"></i
             ></router-link> -->
 
           <router-link class="link" to="/Account">
-            <img src="@/assets/account.png"
+            <img src="@/assets/accounblack.png"
           /></router-link>
 
           <button v-if="user" @click.prevent="signOut">
-            <img src="@/assets/signout.png" />
+            <img src="@/assets/logout.png" />
           </button>
         </nav>
       </div>
@@ -97,7 +96,6 @@ header {
 
 button {
   text-transform: uppercase;
-  margin: 1rem;
   cursor: pointer;
 }
 
@@ -121,14 +119,14 @@ button {
   margin-top: 2rem;
   width: 100%;
   background-color: white;
-  border-top: 1px solid red;
+  border-top: 1px solid black;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .navigation button {

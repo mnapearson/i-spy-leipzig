@@ -1,203 +1,155 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
+  <div>
+    <header>Create Your Account</header>
+    <div class="container">
+      <form @submit.prevent="submit">
+        <div class="col-md-6">
+          <input
+            type="text"
+            name="first name"
+            required
+            autofocus
+            v-model="userInfo.firstName"
+            placeholder="FIRST NAME"
+          />
+        </div>
+
+        <div class="col-md-6">
+          <input
+            type="text"
+            name="last name"
+            required
+            autofocus
+            v-model="userInfo.lastName"
+            placeholder="LAST NAME"
+          />
+        </div>
+
+        <div class="col-md-6">
+          <input
+            id="username"
+            type="username"
+            class="form-control"
+            name="username"
+            value
+            required
+            autofocus
+            v-model="userInfo.userName"
+            placeholder="USERNAME"
+          />
+        </div>
+
         <div>
-          <h1>Register</h1>
-          <div class="card-body">
-            <form @submit.prevent="submit">
-              <div class="form-group row">
-                <label for="name" class="col-md-4 col-form-label text-md-right"
-                  >Name</label
-                >
+          <vuejs-datepicker
+            v-model="userInfo.birthdate"
+            placeholder="BIRTHDATE"
+            class="date"
+          ></vuejs-datepicker>
+        </div>
 
-                <div class="col-md-6">
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    autofocus
-                    v-model="userInfo.name"
-                  />
-                </div>
-              </div>
+        <div id="gender">
+          <div class="radio">
+            <input
+              type="radio"
+              id="gender-f"
+              name="gender"
+              class="custom-control-input"
+              value="♀"
+              v-model="userInfo.gender"
+            />
+            <label> ♀</label>
+          </div>
+          <div class="radio">
+            <input
+              type="radio"
+              id="gender-m"
+              name="gender"
+              class="custom-control-input"
+              value="♂"
+              v-model="userInfo.gender"
+            />
+            <label> ♂ </label>
+          </div>
+          <div class="radio">
+            <input
+              type="radio"
+              id="gender-na"
+              name="gender"
+              class="custom-control-input"
+              value="×"
+              v-model="userInfo.gender"
+            />
 
-              <div class="form-group row">
-                <label
-                  for="username"
-                  class="col-md-4 col-form-label text-md-right"
-                  >Username</label
-                >
-
-                <div class="col-md-6">
-                  <input
-                    id="username"
-                    type="username"
-                    class="form-control"
-                    name="username"
-                    value
-                    required
-                    autofocus
-                    v-model="userInfo.userName"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label
-                  for="birthdate"
-                  class="col-md-4 col-form-label text-md-right"
-                  >Birthdate</label
-                >
-
-                <div class="col-md-6">
-                  <vuejs-datepicker
-                    v-model="userInfo.birthdate"
-                  ></vuejs-datepicker>
-                </div>
-              </div>
-
-              <div id="gender" class="form-group">
-                <label>If you want to identify as:</label>
-                <br />
-                <div class="custom-control custom-radio custom-control-inline">
-                  <input
-                    type="radio"
-                    id="gender-f"
-                    name="gender"
-                    class="custom-control-input"
-                    value="♀"
-                    v-model="userInfo.gender"
-                  />
-                  <label class="custom-control-label" for="gender-f">
-                    ♀ Female</label
-                  >
-                </div>
-                <div class="custom-control custom-radio custom-control-inline">
-                  <input
-                    type="radio"
-                    id="gender-m"
-                    name="gender"
-                    class="custom-control-input"
-                    value="♂"
-                    v-model="userInfo.gender"
-                  />
-                  <label class="custom-control-label" for="gender-m">
-                    ♂ Male</label
-                  >
-                </div>
-                <div class="custom-control custom-radio custom-control-inline">
-                  <input
-                    type="radio"
-                    id="gender-na"
-                    name="gender"
-                    class="custom-control-input"
-                    value="×"
-                    v-model="userInfo.gender"
-                  />
-
-                  <label class="custom-control-label" for="gender-na">
-                    × Non-binary</label
-                  >
-                </div>
-              </div>
-
-              <div class="email-info">
-                <div class="form-group">
-                  <label
-                    for="email"
-                    class="col-md-4 col-form-label text-md-right"
-                    >Email</label
-                  >
-
-                  <div class="col-md-6">
-                    <input
-                      id="email"
-                      type="email"
-                      class="form-control"
-                      name="email"
-                      value
-                      required
-                      autofocus
-                      v-model="email"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div class="email-info">
-                <div class="form-group">
-                  <label
-                    for="email"
-                    class="col-md-4 col-form-label text-md-right"
-                    >Confirm Email</label
-                  >
-
-                  <div class="col-md-6">
-                    <input
-                      id="email"
-                      type="email"
-                      class="form-control"
-                      name="email"
-                      value
-                      required
-                      autofocus
-                      v-model="userInfo.email"
-                    />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label
-                    for="password"
-                    class="col-md-4 col-form-label text-md-right"
-                    >Password</label
-                  >
-
-                  <div class="col-md-6">
-                    <input
-                      id="password"
-                      type="password"
-                      class="form-control"
-                      name="password"
-                      required
-                      v-model="password"
-                    />
-                    <div
-                      v-if="!$v.password.minLength && $v.password.$dirty"
-                      class="error"
-                    >
-                      Password must have at least
-                      {{ $v.password.$params.minLength.min }} charachters.
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group row mb-0">
-                <div class="col-md-8 offset-md-4">
-                  <button type="submit" class="btn btn-primary">
-                    Register
-                  </button>
-                  <p class="legal">
-                    when you register you agree to our
-                    <router-link
-                      to="/terms"
-                      class="link"
-                      style="text-decoration: underline"
-                      >terms and conditions</router-link
-                    >
-                  </p>
-                </div>
-              </div>
-            </form>
+            <label> × </label>
           </div>
         </div>
-      </div>
-    </div>
 
-    <h4 v-if="error">
-      {{ error }}
-    </h4>
+        <div class="col-md-6">
+          <input
+            id="email"
+            type="email"
+            class="form-control"
+            name="email"
+            value
+            required
+            autofocus
+            v-model="email"
+            placeholder="EMAIL"
+          />
+        </div>
+
+        <div class="col-md-6">
+          <input
+            id="email"
+            type="email"
+            class="form-control"
+            name="email"
+            value
+            required
+            autofocus
+            v-model="userInfo.email"
+            placeholder="CONFIRM EMAIL"
+          />
+        </div>
+
+        <div class="col-md-6">
+          <input
+            id="password"
+            type="password"
+            class="form-control"
+            name="password"
+            required
+            v-model="password"
+            placeholder="PASSWORD"
+          />
+          <div
+            v-if="!$v.password.minLength && $v.password.$dirty"
+            class="error"
+          >
+            Password must have at least
+            {{ $v.password.$params.minLength.min }} characters.
+          </div>
+        </div>
+        <h4 v-if="error">
+          {{ error }}
+        </h4>
+        <button type="submit" class="btn btn-primary">
+          <img src="@/assets/Focusregister.png" alt="" />
+        </button>
+        <p class="legal">
+          when you register you agree to our
+          <router-link
+            to="/terms"
+            class="link"
+            style="text-decoration: underline"
+            >terms and conditions</router-link
+          >
+        </p>
+      </form>
+    </div>
+    <router-link class="login link" to="/">
+      ALREADY HAVE AN ACCOUNT? LOG IN.</router-link
+    >
   </div>
 </template>
 
@@ -267,7 +219,8 @@ export default {
     createEmptyUserInfo() {
       return {
         userName: null,
-        name: null,
+        firstName: null,
+        lastName: null,
         gender: null,
         birthdate: null,
         email: null,
@@ -278,43 +231,81 @@ export default {
 </script>
 
 <style scoped>
-.container {
+header {
+  background-color: yellow;
+  padding: 0.5rem;
+}
+
+form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
-}
-
-h1 {
-  margin-bottom: 1rem;
-  text-align: center;
 }
 
 input {
-  margin: 0.5rem 0;
+  width: 300px;
+  padding: 0.5rem;
+  background-color: yellow;
+  border: none;
+  margin-top: 1rem;
+  color: black;
+}
+
+.date {
+  width: 300px;
+  padding: 0.5rem;
+  background-color: yellow;
+  border: none;
+  margin-top: 1rem;
+}
+
+::placeholder {
+  color: black;
 }
 
 button {
-  margin: 1rem 0;
+  background: none;
+  border: none;
+  margin-top: 3rem;
 }
 
-h4 {
-  font-size: 28px;
-  color: red;
-  margin: 3rem;
-  text-transform: uppercase;
-}
-
-.email-info {
-  margin-top: 1rem;
+#gender input {
+  width: 70px;
 }
 
 #gender {
+  display: flex;
+  background-color: yellow;
+  width: 300px;
+  padding: 0 0.5rem;
   margin-top: 1rem;
 }
 
+.radio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .legal {
-  font-size: 10px;
+  font-size: 8px;
+  margin-top: 2rem;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.login:hover {
+  text-decoration: underline;
+}
+
+h4 {
+  margin: 2rem;
 }
 </style>

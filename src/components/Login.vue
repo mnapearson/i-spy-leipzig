@@ -2,18 +2,13 @@
   <div>
     <template v-if="!user">
       <div class="container">
-        <h1>Please log in...</h1>
+        <img src="@/assets/pepicons_eye.png" alt="" />
+        <h1>i spy</h1>
         <div class="login">
           <div class="card">
             <div class="card-body">
               <form @submit.prevent="submit">
                 <div class="form-group row">
-                  <label
-                    for="email"
-                    class="col-md-4 col-form-label text-md-right"
-                    >Email</label
-                  >
-
                   <div class="col-md-6">
                     <input
                       id="email"
@@ -24,17 +19,12 @@
                       required
                       autofocus
                       v-model="email"
+                      placeholder="EMAIL"
                     />
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label
-                    for="password"
-                    class="col-md-4 col-form-label text-md-right"
-                    >Password</label
-                  >
-
                   <div class="col-md-6">
                     <input
                       id="password"
@@ -43,15 +33,17 @@
                       name="password"
                       required
                       v-model="password"
+                      placeholder="PASSWORD"
                     />
                   </div>
                   <div class="login-option">
                     <button type="submit">
-                      Login
+                      <img src="@/assets/FocusLOGIN.png" alt="" />
                     </button>
-                    <div class="extras">
-                      <a @click="togglePasswordReset()">Forgot Password?</a>
-                    </div>
+
+                    <router-link class="extras" to="/about"
+                      >NEED HELP?</router-link
+                    >
                   </div>
                 </div>
 
@@ -67,9 +59,10 @@
             </div>
           </div>
         </div>
-        <h1>Need to create an account?</h1>
 
-        <router-link class="link" to="/Register">REGISTER</router-link>
+        <router-link class="link" to="/Register"
+          >DON'T HAVE AN ACCOUNT? CREATE ONE.</router-link
+        >
       </div>
     </template>
   </div>
@@ -115,17 +108,34 @@ export default {
 <style scoped>
 button {
   margin: 0;
+  background: none;
+  border: none;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 5rem;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 40px;
 }
 
 input {
   margin: 0.5rem 0;
+  width: 300px;
+  padding: 0.5rem;
+  background-color: black;
+  color: white;
+  border: white;
+}
+
+::placeholder {
+  color: white;
+  font-size: 18px;
 }
 
 .login {
@@ -136,13 +146,16 @@ input {
 }
 
 .link {
-  margin-top: 1rem;
-  font-size: 18px;
-  text-decoration: underline;
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+  font-size: 16px;
+  text-decoration: none;
+  color: red;
 }
 
 .link:hover {
-  color: red;
+  text-decoration: underline;
 }
 
 .login-option {
@@ -155,6 +168,14 @@ input {
 .extras {
   font-size: 14px;
   margin: 1rem;
+  font-style: italic;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+}
+
+.extras:hover {
+  text-decoration: underline;
 }
 
 h4 {

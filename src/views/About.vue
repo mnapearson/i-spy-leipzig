@@ -1,7 +1,12 @@
 <template>
   <div>
-    <h1>FAQ</h1>
+    <h1>i spy FAQ</h1>
     <ol>
+      <li>How do I reset my password?</li>
+      <p>
+        If you wish to reset your password, please contact our team at
+        hi@ispyleipzig.de
+      </p>
       <li>How do I delete my account?</li>
       <p>
         If you wish to delete your account, please contact our team at

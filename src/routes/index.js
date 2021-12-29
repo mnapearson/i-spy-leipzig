@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Register from "../views/Register";
 import About from "../views/About";
 import Home from "../views/Home";
+import Login from "../components/Login";
 import Bye from "../views/Bye";
 import Spy from "../views/Spy";
 import Verify from "../views/Verify";
@@ -12,6 +13,7 @@ import Terms from "../views/Terms";
 import Privacy from "../views/Privacy";
 import Impressum from "../views/Impressum";
 import { auth } from "../firebase";
+// import { hasOwnMetadata } from "core-js/fn/reflect";
 
 Vue.use(Router);
 
@@ -21,8 +23,8 @@ const router = new Router({
   routes: [
     {
       path: "/",
-      name: "Home",
-      component: Home,
+      name: "Login",
+      component: Login,
     },
     {
       path: "/register",
@@ -30,11 +32,19 @@ const router = new Router({
       component: Register,
     },
     {
+      path: "/home",
+      name: "Home",
+      component: Home,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+
+    {
       path: "/about",
       name: "about",
       component: About,
     },
-
     {
       path: "/bye",
       name: "Bye",
@@ -46,12 +56,17 @@ const router = new Router({
       component: Spy,
       meta: {
         requiresAuth: true,
+        navBarColor: "#7101FF",
       },
     },
     {
       path: "/messages",
       name: "messages",
       component: Messages,
+      meta: {
+        requiresAuth: true,
+        navBarColor: "#7101FF",
+      },
     },
     {
       path: "/verify",
@@ -65,6 +80,7 @@ const router = new Router({
       path: "/account",
       name: "account",
       component: Account,
+      meta: { navBarColor: "#5FA7E9" },
     },
     {
       path: "/terms",
