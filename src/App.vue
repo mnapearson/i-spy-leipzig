@@ -85,32 +85,9 @@ export default {
   margin: 0 auto;
 }
 
-.a {
-  cursor: pointer;
-  text-transform: italic;
-}
-
-header {
-  cursor: zoom-in;
-}
-
 button {
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.title {
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  color: white;
-  mix-blend-mode: screen;
-  width: 100vw;
-  font-size: 70pt;
-  font-weight: bold;
-  text-align: center;
-  -webkit-text-stroke: 4px black;
-  flex-wrap: nowrap;
+  background: none;
+  border: none;
 }
 
 .navigation {
@@ -127,6 +104,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
+  max-width: 400px;
 }
 
 .navigation button {
@@ -139,80 +117,5 @@ nav {
   text-decoration: none;
   text-transform: italic;
   color: black;
-}
-
-.validate {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#mc_embed_signup {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-  margin-left: 1rem;
-}
-
-#mc_embed_signup_scroll {
-  display: flex;
-  margin-top: 0.5rem;
-}
-.scroll-left {
-  height: 90px;
-  overflow: hidden;
-  position: relative;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-}
-.scroll-left p {
-  position: absolute;
-  flex-wrap: nowrap;
-  width: 100%;
-  height: 100%;
-  line-height: 82px;
-  text-align: center;
-  text-shadow: 5px 6px;
-  /* Starting position */
-  -moz-transform: translateX(100%);
-  -webkit-transform: translateX(100%);
-  transform: translateX(100%);
-  /* Apply animation to this element */
-  -moz-animation: scroll-left 10s linear infinite;
-  -webkit-animation: scroll-left 10s linear infinite;
-  animation: scroll-left 30s linear infinite;
-}
-/* Move it (define the animation) */
-@-moz-keyframes scroll-left {
-  0% {
-    -moz-transform: translateX(100%);
-  }
-  100% {
-    -moz-transform: translateX(-100%);
-  }
-}
-@-webkit-keyframes scroll-left {
-  0% {
-    -webkit-transform: translateX(100%);
-  }
-  100% {
-    -webkit-transform: translateX(-100%);
-  }
-}
-@keyframes scroll-left {
-  0% {
-    -moz-transform: translateX(100%); /* Browser bug fix */
-    -webkit-transform: translateX(100%); /* Browser bug fix */
-    transform: translateX(100%);
-  }
-  100% {
-    -moz-transform: translateX(-100%); /* Browser bug fix */
-    -webkit-transform: translateX(-100%); /* Browser bug fix */
-    transform: translateX(-100%);
-  }
 }
 </style>

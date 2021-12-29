@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>i spy FAQ</h1>
-    <ol>
+    <header>i spy FAQ</header>
+    <ul>
       <li>How do I reset my password?</li>
       <p>
         If you wish to reset your password, please contact our team at
@@ -33,11 +33,50 @@
         If you have any questions or concerns, please contact our team at
         hi@ispyleipzig.de.
       </p>
-    </ol>
-    <h2>
-      Always contact us directly at hi@ispyleipzig.de if you have a question for
-      our team!
-    </h2>
+    </ul>
+    <footer>
+      <div class="footer-left">
+        <p>
+          <a class="link" href="https://www.instagram.com/ispyleipzig/"
+            >instagram</a
+          >
+        </p>
+        <p>
+          <a class="link" href="https://twitter.com/ISPYLEIPZIG">twitter</a>
+        </p>
+      </div>
+
+      <div class="footer-right">
+        <p>
+          <router-link to="/privacy" class="link">privacy policy</router-link>
+        </p>
+        <p>
+          <router-link to="/impressum" class="link">impressum</router-link>
+        </p>
+      </div>
+    </footer>
+    <div class="navigation" v-if="user">
+      <nav>
+        <router-link class="link" to="/home"
+          ><img src="@/assets/pepicons_eyesmall.png"
+        /></router-link>
+
+        <router-link class="link" to="spy"
+          ><img src="@/assets/postbutton.png"
+        /></router-link>
+        <!-- <router-link class="link" to="/About"
+              ><i class="fas fa-question-circle"></i
+            ></router-link> -->
+
+        <router-link class="link" to="/Account">
+          <img src="@/assets/accounblack.png"
+        /></router-link>
+
+        <button v-if="user" @click.prevent="signOut">
+          <img src="@/assets/logout.png" />
+        </button>
+      </nav>
+    </div>
   </div>
 </template>
 
@@ -46,29 +85,46 @@ export default {};
 </script>
 
 <style scoped>
-a {
-  cursor: pointer;
-}
-h1,
-h2 {
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-  width: 70%;
-  text-align: center;
-  margin-bottom: 2rem;
+header {
+  background-color: blue;
+  padding: 0.5rem;
+  color: white;
 }
 
-ol {
-  margin-top: 3rem;
-  width: 70%;
+ul {
+  list-style: none;
+  padding: 0 0.5rem 4rem;
 }
 
 li {
-  margin-top: 1rem;
+  margin: 1rem 0;
   font-weight: bold;
+  background-color: blue;
+  padding: 0.5rem;
+  color: white;
 }
+
 p {
-  margin-top: 0.5rem;
+  margin: 0.5rem;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 4rem 0;
+  text-align: center;
+}
+
+.footer-left,
+.footer-right {
+  margin-bottom: 1rem;
+  display: flex;
+}
+
+.footer-left p,
+.footer-right p {
+  margin: 0 1rem;
 }
 </style>

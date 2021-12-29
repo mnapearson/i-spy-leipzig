@@ -36,6 +36,9 @@
                       placeholder="PASSWORD"
                     />
                   </div>
+                  <h4 v-if="error">
+                    {{ error }}
+                  </h4>
                   <div class="login-option">
                     <button type="submit">
                       <img src="@/assets/FocusLOGIN.png" alt="" />
@@ -46,10 +49,6 @@
                     >
                   </div>
                 </div>
-
-                <h4 v-if="error">
-                  {{ error }}
-                </h4>
 
                 <PasswordReset
                   v-if="showPasswordReset"
@@ -179,7 +178,8 @@ input {
 }
 
 h4 {
-  margin-top: 2rem;
   color: red;
+  text-align: center;
+  font-size: 12px;
 }
 </style>

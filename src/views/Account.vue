@@ -1,50 +1,49 @@
 <template>
   <div>
-    <div v-if="!user">
-      <Login></Login>
-    </div>
-    <div class="account" v-if="user">
-      <h2>your account settings</h2>
-      <div class="account-info">
-        <div class="input email">
-          <p>email:</p>
-          <p>{{ this.user.email }}</p>
-        </div>
-        <div class="input name">
-          <p>name:</p>
-          <p>{{ this.$store.getters.myProfile.name }}</p>
-        </div>
-        <div class="input username">
-          <p>username:</p>
-          <p>{{ this.$store.getters.myProfile.userName }}</p>
-        </div>
-        <div class="input age">
-          <p>birthdate:</p>
-          <p>
-            {{
-              this.$store.getters.myProfile.birthdate.toDate() | formatBirthdate
-            }}
-          </p>
-        </div>
-        <div class="input gender">
-          <p>gender:</p>
-          <p>{{ this.$store.getters.myProfile.gender }}</p>
-        </div>
+    <header>Your Account info</header>
+    <div class="account-info">
+      <div class="input email">
+        <p>email:</p>
+        {{ this.user.email }}
       </div>
+      <div class="input firstname">
+        <p>first name:</p>
+        {{ this.$store.getters.myProfile.firstName }}
+      </div>
+      <div class="input lastname">
+        <p>last name:</p>
+        {{ this.$store.getters.myProfile.lastName }}
+      </div>
+      <div class="input username">
+        <p>username:</p>
+        {{ this.$store.getters.myProfile.userName }}
+      </div>
+      <div class="input age">
+        <p>birthdate:</p>
+        {{ this.$store.getters.myProfile.birthdate.toDate() | formatBirthdate }}
+      </div>
+      <div class="input gender">
+        <p>gender:</p>
+        {{ this.$store.getters.myProfile.gender }}
+      </div>
+      <button v-if="user" @click.prevent="signOut">
+        <img src="@/assets/Focusaccountlogout.png" />
+      </button>
+      <router-link class="extras" to="/about"
+        >WANT TO EDIT YOUR INFO? <br />
+        CONTACT US.</router-link
+      >
     </div>
   </div>
 </template>
 
 <script>
-import Login from "../components/Login";
 import { mapState } from "vuex";
 import firebase from "firebase";
 
 export default {
   name: "Account",
-  components: {
-    Login,
-  },
+
   computed: {
     ...mapState(["user", "posts"]),
   },
@@ -67,22 +66,21 @@ export default {
 </script>
 
 <style scoped>
-.navigation {
-  background-color: black;
+header {
+  background-color: #5fa7e9;
+  padding: 0.5rem;
 }
 
-.account {
-  margin: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.extras {
+  margin-top: 4rem;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
 }
 
-button {
-  margin-top: 3rem;
-  height: 30px;
-  width: 50px;
+.extras:hover {
+  text-decoration: underline;
 }
 
 .account-info {
@@ -92,13 +90,24 @@ button {
 }
 
 .input {
-  display: flex;
-  justify-content: flex-end;
-  margin: 2rem;
+  min-width: 300px;
+  max-width: 700px;
+  padding: 0.5rem;
+  background-color: #5fa7e9;
+  border: none;
+  margin-top: 1rem;
+  color: black;
 }
 
-.input p {
-  padding: 0 0.5rem;
-  display: flex;
+p {
+  margin-bottom: 0.1rem;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+button {
+  background: none;
+  border: none;
+  margin-top: 3rem;
 }
 </style>
