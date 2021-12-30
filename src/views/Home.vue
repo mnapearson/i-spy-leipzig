@@ -47,9 +47,9 @@
             <div class="post-text">
               {{ post.text }}
             </div>
-            <div class="like-button">
+            <button @click="addLike" class="like-button">
               <img src="@/assets/likebutton.png" alt="" />
-            </div>
+            </button>
           </div>
         </div>
       </section>

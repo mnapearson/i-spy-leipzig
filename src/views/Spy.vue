@@ -1,13 +1,17 @@
 <template>
   <div>
-    <template>
-      <div class="top" v-if="successMessage">
-        <h1>Nice work. Head to the spy board to check out your post...</h1>
-      </div>
-      <header v-if="successMessage == false">Write a Spy</header>
-      <div v-if="successMessage == false" class="form">
-        <form @submit.prevent>
-          <!-- <div class="place">
+    <div v-if="successMessage">
+      <header>success</header>
+      <p>Nice work. Head to the spy board to check out your post...</p>
+    </div>
+
+    <header v-if="successMessage == false">Write a Spy</header>
+    <div v-if="successMessage == false" class="form">
+      <!-- <p v-if="error">
+          {{ error }}
+        </p> -->
+      <form @submit.prevent>
+        <!-- <div class="place">
             <div class="radio">
               <input
                 type="radio"
@@ -122,40 +126,39 @@
             </div>
           </div> -->
 
-          <input
-            class="title"
-            v-model="title"
-            type="text"
-            name="Title"
-            placeholder="Who, what, where..."
-            required
-          />
-          <input
-            class="mb-4"
-            v-model="dateSpied"
-            type="date"
-            name="DateSpied"
-            placeholder="When did you spy this person?"
-            required
-          />
-          <textarea
-            rows="10"
-            v-model="text"
-            class="font-mono p-4 "
-            type="text"
-            name="Create Post"
-            placeholder="flex ur inner shakespeare..."
-            required
-          ></textarea>
+        <input
+          class="title"
+          v-model="title"
+          type="text"
+          name="Title"
+          placeholder="Who, what, where..."
+          required
+        />
+        <input
+          class="mb-4"
+          v-model="dateSpied"
+          type="date"
+          name="DateSpied"
+          placeholder="When did you spy this person?"
+          required
+        />
+        <textarea
+          rows="10"
+          v-model="text"
+          class="font-mono p-4 "
+          type="text"
+          name="Create Post"
+          placeholder="flex ur inner shakespeare..."
+          required
+        ></textarea>
 
-          <div class="button">
-            <button class="button" @click="submitPost()">
-              <img src="@/assets/postbutton.png" alt="" />
-            </button>
-          </div>
-        </form>
-      </div>
-    </template>
+        <div class="button">
+          <button class="button" @click="submitPost()">
+            <img src="@/assets/postbutton.png" alt="" />
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -180,6 +183,13 @@ export default {
       text: "",
     };
   },
+  validations() {
+    return {
+      title: { required }, // Matches this.firstName
+      dateSpied: { required }, // Matches this.lastName
+      text: { required },
+    };
+  },
 
   props: {
     value: Date,
@@ -198,6 +208,11 @@ export default {
 
   methods: {
     async submitPost() {
+      const result = await this.v$.$validate();
+      if (!result) {
+        this.error = "please fill in all fields";
+        return;
+      }
       const post = {
         title: this.title,
         text: this.text,
@@ -219,13 +234,6 @@ export default {
       this.dateSpied = "";
       this.successMessage = true;
     },
-    validations() {
-      return {
-        title: { required }, // Matches this.firstName
-        dateSpied: { required }, // Matches this.lastName
-        text: { required },
-      };
-    },
   },
 };
 </script>
@@ -235,6 +243,12 @@ header {
   background-color: #7101ff;
   padding: 0.5rem;
   color: white;
+}
+
+p {
+  text-align: center;
+  position: absolute;
+  top: 50%;
 }
 
 form {

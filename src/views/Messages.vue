@@ -3,8 +3,9 @@
     <div v-if="!user">
       <Login></Login>
     </div>
+    {{ userChat }}
     <div class="message-form" v-if="user">
-      <h2>Write your reply to <i>@user...</i></h2>
+      <h2>Write your reply to</h2>
       <div class="message-to">
         <input type="text" placeholder="Email" v-model="email" />
       </div>
@@ -58,7 +59,8 @@ export default {
             "!",
           text: this.text,
         },
-      });
+      }),
+        db.collection("chat").add({ text: this.text });
       this.email = "";
       this.text = "";
       this.subject = "";
@@ -66,15 +68,16 @@ export default {
     },
   },
   computed: {
-    ...mapState(["posts", "profiles", "user", "messages"]),
-    userMessages() {
-      const userMessages = this.$store.state.messages;
-      return userMessages;
+    ...mapState(["posts", "profiles", "user", "chat"]),
+    userChat() {
+      const userChat = this.$store.state.chat;
+      return userChat;
     },
   },
   mounted() {
     this.myProfile = this.$store.getters.myProfile;
     this.$store.dispatch("bindMessages");
+    this.$store.dispatch("bindChat");
   },
 };
 </script>

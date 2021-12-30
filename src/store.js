@@ -68,5 +68,8 @@ export default new Vuex.Store({
     bindMessages: firestoreAction(({ bindFirestoreRef }) =>
       bindFirestoreRef("messages", db.collection("messages"))
     ),
+    bindChat: firestoreAction(({ bindFirestoreRef }) =>
+      bindFirestoreRef("chat", db.collection("chat"))
+    ),
   },
 });

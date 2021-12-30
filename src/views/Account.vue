@@ -87,6 +87,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-top: 3rem;
 }
 
 .input {
