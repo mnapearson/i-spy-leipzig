@@ -1,13 +1,14 @@
 <template>
   <div>
     <header>Spy Board</header>
-    <section>
-      <PostFilter></PostFilter>
-      <div class="main-container">
+    <div class="main-container">
+      <section>
+        <PostFilter></PostFilter>
         <div class="posts" v-for="post in sortedPosts" :key="post.id">
           <div class="row">
             <div class="post-date">
-              <p>{{ post.date.toDate() | formatDate }}</p>
+              <!-- <p>{{ post.date.toDate() | formatDate }}</p> -->
+              <p>{{ post.dateSpied | formatDate }}</p>
             </div>
             <div class="post-author">
               <p>
@@ -16,15 +17,18 @@
               </p>
             </div>
 
-            <button class="reply">
-              <router-link to="/messages">reply</router-link>
-            </button>
+            <div class="reply-button">
+              <button class="reply">
+                <router-link to="/messages"
+                  ><img src="@/assets/reply.png" alt=""
+                /></router-link>
+              </button>
+            </div>
           </div>
           <div class="row text">
             <div class="post-title">
-              "{{ post.title }}"
-              <div class="post-details">
-                <p>{{ post.dateSpied | formatDate }}</p>
+              {{ post.title }}
+              <!-- <div class="post-details">
                 <p class="post-place">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -38,13 +42,18 @@
                     /></svg
                   >{{ post.place }}
                 </p>
-              </div>
+              </div> -->
             </div>
-            <div class="post-text">{{ post.text }}</div>
+            <div class="post-text">
+              {{ post.text }}
+            </div>
+            <div class="like-button">
+              <img src="@/assets/likebutton.png" alt="" />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -92,8 +101,8 @@ button {
 
 .post-author {
   font-size: 14px;
-  text-align: center;
   text-transform: none;
+  margin: 0.2rem 0;
 }
 
 .post-details {
@@ -124,7 +133,8 @@ section {
 .main-container {
   color: black;
   text-transform: uppercase;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
+  max-width: 700px;
 }
 
 .posts {
@@ -135,7 +145,7 @@ section {
   width: 100%;
   margin-top: 1rem;
   align-items: flex-start;
-  border-top: 1px solid red;
+  border-top: 1px dotted red;
 }
 
 .reply a {
@@ -156,14 +166,19 @@ section {
 }
 
 .post-text {
+  display: flex;
+  align-items: flex-start;
   margin-top: 1rem;
   text-transform: none;
   font-size: 12px;
 }
 
 .row {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
+  margin: 0.5rem;
+}
+
+.like-button {
+  position: absolute;
+  right: 5%;
 }
 </style>

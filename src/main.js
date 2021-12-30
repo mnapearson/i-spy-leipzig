@@ -4,6 +4,7 @@ import { auth } from "@/firebase";
 import { firestorePlugin } from "vuefire";
 import store from "@/store";
 import vSelect from "vue-select";
+import VueCompositionAPI from "@vue/composition-api";
 import Vuelidate from "vuelidate";
 import router from "@/routes";
 
@@ -62,6 +63,7 @@ auth.onAuthStateChanged(async (user) => {
 Vue.component("v-select", vSelect);
 
 Vue.use(firestorePlugin);
+Vue.use(VueCompositionAPI);
 Vue.use(Vuelidate);
 Vue.config.productionTip = false;
 

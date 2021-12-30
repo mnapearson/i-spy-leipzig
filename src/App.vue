@@ -20,7 +20,7 @@
           /></router-link>
 
           <router-link class="link" to="spy"
-            ><img src="@/assets/postbutton.png"
+            ><img src="@/assets/spysum1.png"
           /></router-link>
           <!-- <router-link class="link" to="/About"
               ><i class="fas fa-question-circle"></i
@@ -93,10 +93,11 @@ button {
 .navigation {
   position: fixed;
   bottom: 0;
-  margin-top: 2rem;
+  margin-top: 0;
   width: 100%;
   background-color: white;
   border-top: 1px solid black;
+  z-index: 2000;
 }
 
 nav {

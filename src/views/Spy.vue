@@ -4,20 +4,10 @@
       <div class="top" v-if="successMessage">
         <h1>Nice work. Head to the spy board to check out your post...</h1>
       </div>
-      <div v-if="successMessage == false" class="top">
-        <h1>Write your spy...</h1>
-      </div>
+      <header v-if="successMessage == false">Write a Spy</header>
       <div v-if="successMessage == false" class="form">
         <form @submit.prevent>
-          <input
-            class="mb-4"
-            v-model="title"
-            type="text"
-            name="Title"
-            placeholder="Who, what, where..."
-            required
-          />
-          <div class="place">
+          <!-- <div class="place">
             <div class="radio">
               <input
                 type="radio"
@@ -130,13 +120,23 @@
                 Nordwest</label
               >
             </div>
-          </div>
+          </div> -->
+
+          <input
+            class="title"
+            v-model="title"
+            type="text"
+            name="Title"
+            placeholder="Who, what, where..."
+            required
+          />
           <input
             class="mb-4"
             v-model="dateSpied"
             type="date"
             name="DateSpied"
             placeholder="When did you spy this person?"
+            required
           />
           <textarea
             rows="10"
@@ -149,7 +149,9 @@
           ></textarea>
 
           <div class="button">
-            <button class="button" @click="submitPost()">post</button>
+            <button class="button" @click="submitPost()">
+              <img src="@/assets/postbutton.png" alt="" />
+            </button>
           </div>
         </form>
       </div>
@@ -160,11 +162,14 @@
 <script>
 import { mapState } from "vuex";
 import { db } from "@/firebase";
-import { required } from "vuelidate/lib/validators";
+import useVuelidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 
 export default {
   name: "postSpy",
-
+  setup() {
+    return { v$: useVuelidate() };
+  },
   data() {
     return {
       myProfile: undefined,
@@ -175,14 +180,7 @@ export default {
       text: "",
     };
   },
-  validations: {
-    title: {
-      required,
-    },
-    text: {
-      required,
-    },
-  },
+
   props: {
     value: Date,
   },
@@ -221,29 +219,35 @@ export default {
       this.dateSpied = "";
       this.successMessage = true;
     },
+    validations() {
+      return {
+        title: { required }, // Matches this.firstName
+        dateSpied: { required }, // Matches this.lastName
+        text: { required },
+      };
+    },
   },
 };
 </script>
 
 <style scoped>
-h1 {
-  margin: 2rem;
+header {
+  background-color: #7101ff;
+  padding: 0.5rem;
+  color: white;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  padding: 0 3rem;
-  margin: 0 4rem;
-  color: red;
+  color: #7101ff;
+  margin-top: 3rem;
 }
 
 .place {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 100%;
+  height: 50px;
+  width: 150px;
+  overflow: scroll;
 }
 
 .radio {
@@ -257,21 +261,27 @@ form {
 
 input {
   display: flex;
-  margin: 2rem;
-  color: red;
+  width: 300px;
+  border: 2px solid #7101ff;
+  margin-top: 2rem;
+  padding: 0.5rem;
+  color: #7101ff;
 }
 
 textarea {
   display: flex;
-  margin: 2rem;
-  color: red;
+  width: 300px;
+  border: 2px solid #7101ff;
+  margin-top: 2rem;
+  padding: 0.5rem;
+  color: #7101ff;
 }
 
-.top {
-  display: flex;
-  max-width: 50%;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+button {
+  margin-top: 3rem;
+}
+
+::placeholder {
+  color: #7101ff;
 }
 </style>
