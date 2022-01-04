@@ -4,6 +4,9 @@
     <div class="main-container">
       <section>
         <PostFilter></PostFilter>
+        <div class="no-posts" v-if="allPosts == 0">
+          There are no posts yet. <br />Make one!
+        </div>
         <div class="posts" v-for="post in sortedPosts" :key="post.id">
           <div class="row">
             <div class="post-date">
@@ -180,5 +183,12 @@ section {
 .like-button {
   position: absolute;
   right: 5%;
+}
+
+.no-posts {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  text-align: center;
 }
 </style>
