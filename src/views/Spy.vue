@@ -213,7 +213,9 @@ export default {
         this.error = "please fill in all fields";
         return;
       }
+      const dataBase = await db.collection("posts").doc();
       const post = {
+        id: dataBase.id,
         title: this.title,
         text: this.text,
         date: new Date(),

@@ -21,8 +21,10 @@
             </div>
 
             <div class="reply-button">
-              <button class="reply">
-                <router-link to="/messages"
+              <button class="reply" type="reply">
+                <router-link
+                  class="link"
+                  :to="{ name: 'viewPost', params: { postid: post.id } }"
                   ><img src="@/assets/reply.png" alt=""
                 /></router-link>
               </button>

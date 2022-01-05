@@ -11,6 +11,7 @@ import Account from "../views/Account";
 import Messages from "../views/Messages";
 import Terms from "../views/Terms";
 import Privacy from "../views/Privacy";
+import viewPost from "../views/viewPost";
 import Impressum from "../views/Impressum";
 import { auth } from "../firebase";
 // import { hasOwnMetadata } from "core-js/fn/reflect";
@@ -39,6 +40,11 @@ const router = new Router({
         requiresAuth: true,
       },
     },
+    {
+      path: "/view-post:postid",
+      name: "viewPost",
+      component: viewPost,
+    },
 
     {
       path: "/about",
@@ -50,6 +56,7 @@ const router = new Router({
       name: "Bye",
       component: Bye,
     },
+
     {
       path: "/spy",
       name: "Spy",
