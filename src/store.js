@@ -25,6 +25,14 @@ Vue.filter("getAge", function(value) {
   return ~~((Date.now() - birthday) / 31557600000);
 });
 
+Vue.filter("truncate", function(text, length, suffix) {
+  if (text.length > length) {
+    return text.substring(0, length) + suffix;
+  } else {
+    return text;
+  }
+});
+
 export default new Vuex.Store({
   state: {
     user: null,

@@ -50,7 +50,7 @@
               </div> -->
             </div>
             <div class="post-text">
-              {{ post.text }}
+              {{ post.text | truncate(75, "...") }}
             </div>
             <button @click="addLike" class="like-button">
               <img src="@/assets/likebutton.png" alt="" />

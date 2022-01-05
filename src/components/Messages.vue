@@ -5,7 +5,6 @@
     </div>
     {{ userChat }}
     <div class="message-form" v-if="user">
-      <h2>Write your reply to</h2>
       <div class="message-to">
         <input type="text" placeholder="Email" v-model="email" />
       </div>
@@ -50,8 +49,9 @@ export default {
   },
   methods: {
     sendMessage() {
+      const email = this.post.email;
       db.collection("messages").add({
-        to: "marratoon@gmail.com",
+        to: { email },
         message: {
           subject:
             "You have a reply from @" +

@@ -224,6 +224,7 @@ export default {
         author: this.myProfile.userName,
         age: this.myProfile.birthdate.toDate(),
         gender: this.myProfile.gender,
+        email: this.myProfile.email,
       };
       try {
         await db.collection("posts").add(post);

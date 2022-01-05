@@ -8,7 +8,7 @@ import Bye from "../views/Bye";
 import Spy from "../views/Spy";
 import Verify from "../views/Verify";
 import Account from "../views/Account";
-import Messages from "../views/Messages";
+
 import Terms from "../views/Terms";
 import Privacy from "../views/Privacy";
 import viewPost from "../views/viewPost";
@@ -61,15 +61,6 @@ const router = new Router({
       path: "/spy",
       name: "Spy",
       component: Spy,
-      meta: {
-        requiresAuth: true,
-        navBarColor: "#7101FF",
-      },
-    },
-    {
-      path: "/messages",
-      name: "messages",
-      component: Messages,
       meta: {
         requiresAuth: true,
         navBarColor: "#7101FF",
