@@ -1,30 +1,39 @@
 <template>
-  <div class="main">
-    <h1>Hi, you. Go verify your email please.</h1>
-    <p>Check your inbox, spam, etc.</p>
+  <div>
+    <header>Your Account info</header>
+    <div class="verify">
+      <p>
+        Hi, {{ this.$store.getters.myProfile.userName }}. Go verify your email
+        please.
+      </p>
+      <p>Check your inbox, spam, etc.</p>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "Verify",
+  computed: {
+    ...mapState(["posts", "profiles", "user"]),
+  },
 };
 </script>
 
 <style scoped>
-.main {
+header {
+  background-color: #5fa7e9;
+  padding: 0.5rem;
+}
+
+.verify {
+  width: 300px;
   margin-top: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-  max-width: 50%;
-  flex-direction: column;
-  cursor: zoom-in;
 }
 
 p {
-  margin-top: 2rem;
-  cursor: zoom-in;
+  margin-top: 1rem;
 }
 </style>

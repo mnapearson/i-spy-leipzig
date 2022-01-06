@@ -8,12 +8,12 @@
         </p>
         <p>@{{ this.currentPost[0].author }}</p>
         <p>
-          {{ this.currentPost[0].age.toDate() | getAge }}
-          {{ this.currentPost[0].gender }}
+          [{{ this.currentPost[0].age.toDate() | getAge }},
+          {{ this.currentPost[0].gender }}]
         </p>
       </div>
       <div class="post-text">
-        <p>
+        <p class="title">
           {{ this.currentPost[0].title }}
         </p>
         <p>
@@ -158,5 +158,14 @@ button {
 
 ::placeholder {
   color: #7101ff;
+}
+
+p {
+  font-size: 12px;
+}
+
+.title {
+  font-size: 14px;
+  margin-bottom: 0.5rem;
 }
 </style>

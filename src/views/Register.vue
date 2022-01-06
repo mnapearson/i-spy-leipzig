@@ -2,6 +2,9 @@
   <div>
     <header>Create Your Account</header>
     <div class="container">
+      <router-link class="login link" to="/">
+        ALREADY HAVE AN ACCOUNT? LOG IN.</router-link
+      >
       <form @submit.prevent="submit">
         <div class="col-md-6">
           <input
@@ -147,9 +150,6 @@
         </p>
       </form>
     </div>
-    <router-link class="login link" to="/">
-      ALREADY HAVE AN ACCOUNT? LOG IN.</router-link
-    >
   </div>
 </template>
 
@@ -197,14 +197,14 @@ export default {
 
         await this.$router.push({ name: "Verify" });
       } catch (error) {
-        this.error = "You have an account!";
+        this.error = "username and/or email already registered";
       }
 
       await auth.onAuthStateChanged((firebaseUser) => {
         if (firebaseUser) {
           firebaseUser.sendEmailVerification();
         } else {
-          this.error = "You have an acccount!";
+          this.error = "Error! Make sure password is longer than 6 characters.";
         }
       });
 
@@ -241,7 +241,7 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 
 input {
@@ -279,7 +279,7 @@ button {
   display: flex;
   background-color: yellow;
   width: 300px;
-  padding: 0 0.5rem;
+  padding: 0 0.5rem 0.5rem 0.5rem;
   margin-top: 1rem;
 }
 
@@ -297,7 +297,7 @@ button {
 .login {
   display: flex;
   justify-content: center;
-  margin-top: 4rem;
+  margin-top: 2rem;
   font-size: 16px;
   font-weight: 600;
 }

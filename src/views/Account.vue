@@ -30,8 +30,7 @@
         <img src="@/assets/Focusaccountlogout.png" />
       </button>
       <router-link class="extras" to="/about"
-        >WANT TO EDIT YOUR INFO? <br />
-        CONTACT US.</router-link
+        >NEED HELP? CONTACT US.</router-link
       >
     </div>
   </div>
@@ -72,7 +71,8 @@ header {
 }
 
 .extras {
-  margin-top: 4rem;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
   color: black;
   text-decoration: none;
   cursor: pointer;

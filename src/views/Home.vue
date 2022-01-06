@@ -9,31 +9,27 @@
         </div>
         <div class="posts" v-for="post in sortedPosts" :key="post.id">
           <div class="row">
-            <div class="post-date">
-              <!-- <p>{{ post.date.toDate() | formatDate }}</p> -->
-              <p>{{ post.dateSpied | formatDate }}</p>
-            </div>
             <div class="post-author">
               <p>
-                @{{ post.author }} <br />({{ post.age.toDate() | getAge }},
-                {{ post.gender }})
+                @{{ post.author }} <br />[{{ post.age.toDate() | getAge }},
+                {{ post.gender }}]
               </p>
             </div>
 
             <div class="reply-button">
-              <button class="reply" type="reply">
-                <router-link
-                  class="link"
-                  :to="{ name: 'viewPost', params: { postid: post.id } }"
-                  ><img src="@/assets/reply.png" alt=""
-                /></router-link>
+              <button @click="addLike">
+                <img src="@/assets/likebutton.png" alt="" />
               </button>
             </div>
           </div>
           <div class="row text">
-            <div class="post-title">
-              {{ post.title }}
-              <!-- <div class="post-details">
+            <router-link
+              class="link"
+              :to="{ name: 'viewPost', params: { postid: post.id } }"
+            >
+              <div class="post-title">
+                {{ post.title }}
+                ({{ post.dateSpied | formatDate }})
                 <p class="post-place">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -47,14 +43,12 @@
                     /></svg
                   >{{ post.place }}
                 </p>
-              </div> -->
-            </div>
-            <div class="post-text">
-              {{ post.text | truncate(75, "...") }}
-            </div>
-            <button @click="addLike" class="like-button">
-              <img src="@/assets/likebutton.png" alt="" />
-            </button>
+              </div>
+
+              <div class="post-text">
+                {{ post.text | truncate(75, "...") }}
+              </div>
+            </router-link>
           </div>
         </div>
       </section>
@@ -124,6 +118,7 @@ button {
 .post-place {
   font-style: italic;
   text-transform: lowercase;
+  margin-top: 0.5rem;
 }
 
 .post-spy {
@@ -163,8 +158,6 @@ section {
 }
 
 .post-title {
-  display: flex;
-  flex-direction: column;
   margin-bottom: 0.5rem;
   text-transform: none;
   font-size: 14px;
@@ -182,9 +175,10 @@ section {
   margin: 0.5rem;
 }
 
-.like-button {
-  position: absolute;
-  right: 5%;
+.row .text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .no-posts {
@@ -192,5 +186,10 @@ section {
   justify-content: center;
   margin-top: 3rem;
   text-align: center;
+}
+
+.like-button {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

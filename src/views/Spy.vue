@@ -1,17 +1,22 @@
 <template>
   <div>
     <div v-if="successMessage">
-      <header>success</header>
+      <header>Success</header>
       <p>Nice work. Head to the spy board to check out your post...</p>
     </div>
 
     <header v-if="successMessage == false">Write a Spy</header>
+    <!-- <vue-dropdown class="dropdown" :config="config"></vue-dropdown> -->
     <div v-if="successMessage == false" class="form">
       <!-- <p v-if="error">
           {{ error }}
         </p> -->
       <form @submit.prevent>
-        <!-- <div class="place">
+        <div class="place">
+          <p>
+            Location
+          </p>
+          <div class="options">
             <div class="radio">
               <input
                 type="radio"
@@ -124,7 +129,8 @@
                 Nordwest</label
               >
             </div>
-          </div> -->
+          </div>
+        </div>
 
         <input
           class="title"
@@ -167,9 +173,13 @@ import { mapState } from "vuex";
 import { db } from "@/firebase";
 import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
+// import VueDropdown from "vue-dynamic-dropdown";
 
 export default {
   name: "postSpy",
+  // components: {
+  //   VueDropdown,
+  // },
   setup() {
     return { v$: useVuelidate() };
   },
@@ -181,6 +191,25 @@ export default {
       place: null,
       dateSpied: "",
       text: "",
+      config: {
+        options: [
+          {
+            value: "nord",
+          },
+          {
+            value: "sud",
+          },
+          {
+            value: "ost",
+          },
+        ],
+
+        backgroundColor: "#fff",
+        border: "2px solid #7101ff",
+        textColor: "black",
+        width: 300,
+        placeholder: "place",
+      },
     };
   },
   validations() {
@@ -249,9 +278,9 @@ header {
 }
 
 p {
+  width: 300px;
   text-align: center;
-  position: absolute;
-  top: 50%;
+  margin-top: 4rem;
 }
 
 form {
@@ -262,18 +291,27 @@ form {
 }
 
 .place {
-  height: 50px;
-  width: 150px;
   overflow: scroll;
+  border: 2px solid #7101ff;
+  width: 315px;
+  height: 40px;
 }
 
-.radio {
+.place p {
+  text-align: left;
+  margin: 0.5rem;
+  font-size: 14px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  color: #7101ff;
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: black;
-  font-size: small;
-  padding: 0 0.2rem;
+  text-align: center;
+  padding-bottom: 1rem;
+  font-size: 14px;
 }
 
 input {
@@ -299,6 +337,14 @@ button {
 }
 
 ::placeholder {
+  color: #7101ff;
+}
+
+.dropdown {
+  margin-top: 2rem;
+  width: 315px;
+  border: 2px solid #7101ff;
+  border-radius: 0;
   color: #7101ff;
 }
 </style>
