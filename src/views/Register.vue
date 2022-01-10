@@ -136,9 +136,11 @@
         <h4 v-if="error">
           {{ error }}
         </h4>
-        <button type="submit" class="btn btn-primary">
-          <img src="@/assets/Focusregister.png" alt="" />
-        </button>
+        <vue-recaptcha sitekey="6LfQlAMeAAAAAIQ_S8iQEckLLc6pRhZe2KKeOTS0">
+          <button type="submit" class="btn btn-primary">
+            <img src="@/assets/Focusregister.png" alt="" />
+          </button>
+        </vue-recaptcha>
         <p class="legal">
           when you register you agree to our
           <router-link
@@ -158,10 +160,11 @@ import vuejsDatepicker from "vuejs-datepicker";
 import { auth, db } from "@/firebase";
 import { mapState } from "vuex";
 import { required, minLength } from "vuelidate/lib/validators";
+import { VueRecaptcha } from "vue-recaptcha";
 
 export default {
   name: "Register",
-
+  components: { VueRecaptcha, vuejsDatepicker },
   data() {
     return {
       error: null,
@@ -179,9 +182,6 @@ export default {
   props: {
     value: Date,
   },
-  components: {
-    vuejsDatepicker,
-  },
 
   computed: {
     ...mapState(["user", "profile"]),
@@ -193,8 +193,8 @@ export default {
   methods: {
     async submit() {
       try {
+        await this.$refs.recaptcha.execute();
         await auth.createUserWithEmailAndPassword(this.email, this.password);
-
         await this.$router.push({ name: "Verify" });
       } catch (error) {
         this.error = "username and/or email already registered";
