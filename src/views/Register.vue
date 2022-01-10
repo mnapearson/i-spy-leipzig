@@ -140,7 +140,8 @@
         <button type="submit" class="btn btn-primary">
           <img src="@/assets/Focusregister.png" alt="" />
         </button>
-
+        <vue-recaptcha sitekey="6LfrjgMeAAAAAFORsHioq1Ce23kj9mO-pzC3kixe">
+        </vue-recaptcha>
         <p class="legal">
           when you register you agree to our
           <router-link
