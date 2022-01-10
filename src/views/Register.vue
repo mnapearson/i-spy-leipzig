@@ -161,10 +161,11 @@ import vuejsDatepicker from "vuejs-datepicker";
 import { auth, db } from "@/firebase";
 import { mapState } from "vuex";
 import { required, minLength } from "vuelidate/lib/validators";
+import { VueRecaptcha } from "vue-recaptcha";
 
 export default {
   name: "Register",
-  components: { vuejsDatepicker },
+  components: { vuejsDatepicker, VueRecaptcha },
   data() {
     return {
       error: null,
