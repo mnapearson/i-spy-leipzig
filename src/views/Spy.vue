@@ -12,6 +12,22 @@
           {{ error }}
         </p> -->
       <form @submit.prevent>
+        <input
+          class="title"
+          v-model="title"
+          type="text"
+          name="Title"
+          placeholder="Who, what, where..."
+          required
+        />
+        <input
+          class="mb-4"
+          v-model="dateSpied"
+          type="date"
+          name="DateSpied"
+          placeholder="When did you spy this person?"
+          required
+        />
         <div class="place">
           <p>
             Location
@@ -131,23 +147,6 @@
             </div>
           </div>
         </div>
-
-        <input
-          class="title"
-          v-model="title"
-          type="text"
-          name="Title"
-          placeholder="Who, what, where..."
-          required
-        />
-        <input
-          class="mb-4"
-          v-model="dateSpied"
-          type="date"
-          name="DateSpied"
-          placeholder="When did you spy this person?"
-          required
-        />
         <textarea
           rows="10"
           v-model="text"
@@ -295,6 +294,7 @@ form {
   border: 2px solid #7101ff;
   width: 315px;
   height: 40px;
+  margin-top: 2rem;
 }
 
 .place p {
